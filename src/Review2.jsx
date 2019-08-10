@@ -118,7 +118,9 @@ class Review2 extends Component {
                     <Typography gutterBottom>Card Number</Typography>
                   </Grid>
                   <Grid item xs={6}>
-                    <Typography gutterBottom>{cardNumber}</Typography>
+                    <Typography gutterBottom>
+                      **** **** **** {cardNumber.slice(-4)}
+                    </Typography>
                   </Grid>
                   <Grid item xs={6}>
                     <Typography gutterBottom>Expiry date</Typography>

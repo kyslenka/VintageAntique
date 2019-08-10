@@ -15,13 +15,17 @@ import AddShoppingCartIcon from "@material-ui/icons/AddShoppingCart";
 
 const styles = theme => ({
   root: {
-    width: "100%"
+    width: "100%",
+    position: "fixed",
+    zIndex: 1,
+    padding: 0
   },
   grow: {
     flexGrow: 1
   },
   title: {
     display: "inline-block",
+    marginRight: "90px",
     // fontFamily: "brillantregular!important",
     [theme.breakpoints.up("sm")]: {
       display: "block"
@@ -114,7 +118,7 @@ class Navbar extends Component {
     const { classes, query, setLogout } = this.props;
     return (
       <div className={classes.root}>
-        <AppBar className="nav" position="static">
+        <AppBar className="nav" position="fixed">
           <Toolbar>
             <Typography
               className={classes.title}

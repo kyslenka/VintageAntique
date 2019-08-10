@@ -14,6 +14,7 @@ import { withStyles } from "@material-ui/core/styles";
 const styles = theme => ({
   layout: {
     width: "auto",
+    minHeight: "calc(100vh - 5px)",
     marginLeft: theme.spacing.unit * 3,
     marginRight: theme.spacing.unit * 3,
     [theme.breakpoints.up(1100 + theme.spacing.unit * 3 * 2)]: {

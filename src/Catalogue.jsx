@@ -6,7 +6,6 @@ import CssBaseline from "@material-ui/core/CssBaseline";
 import Grid from "@material-ui/core/Grid";
 import Typography from "@material-ui/core/Typography";
 import { withStyles } from "@material-ui/core/styles";
-// import initialCatalogues from "./data.js";
 import ItemCard from "./ItemCard.jsx";
 
 const styles = theme => ({
@@ -20,6 +19,7 @@ const styles = theme => ({
   },
   layout: {
     width: "auto",
+    padding: "100px 0",
     marginLeft: theme.spacing.unit * 3,
     marginRight: theme.spacing.unit * 3,
     [theme.breakpoints.up(1100 + theme.spacing.unit * 3 * 2)]: {
@@ -29,7 +29,7 @@ const styles = theme => ({
     }
   },
   cardGrid: {
-    padding: `${theme.spacing.unit * 8}px 0`
+    padding: "100px 0"
   },
   card: {
     height: "100%",
@@ -41,10 +41,6 @@ const styles = theme => ({
   },
   cardContent: {
     flexGrow: 1
-  },
-  footer: {
-    backgroundColor: theme.palette.background.paper,
-    padding: theme.spacing.unit * 6
   }
 });
 
@@ -77,7 +73,7 @@ class Catalogue extends Component {
         <main>
           {/* Hero unit */}
           <div className={classes.heroUnit}>
-            <div className={classes.heroContent}>
+            {/* <div className={classes.heroContent}>
               <Typography
                 component="h1"
                 variant="h2"
@@ -95,7 +91,7 @@ class Catalogue extends Component {
               >
                 {catalogue.description}
               </Typography>
-            </div>
+            </div> */}
           </div>
           <div className={classNames(classes.layout, classes.cardGrid)}>
             {/* End hero unit */}
@@ -106,7 +102,6 @@ class Catalogue extends Component {
                   title={product.title}
                   image={product.image}
                   price={product.price}
-                  // location={product.location}
                   id={product.id}
                   catalogueId={catalogue.id}
                 />
@@ -114,21 +109,6 @@ class Catalogue extends Component {
             </Grid>
           </div>
         </main>
-        {/* Footer */}
-        <footer className={classes.footer}>
-          <Typography variant="h6" align="center" gutterBottom>
-            Footer
-          </Typography>
-          <Typography
-            variant="subtitle1"
-            align="center"
-            color="textSecondary"
-            component="p"
-          >
-            Something here to give the footer a purpose!
-          </Typography>
-        </footer>
-        {/* End footer */}
       </React.Fragment>
     );
   }

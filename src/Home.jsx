@@ -1,155 +1,122 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
-import PropTypes from "prop-types";
-import { withStyles } from "@material-ui/core/styles";
-import ButtonBase from "@material-ui/core/ButtonBase";
-import Typography from "@material-ui/core/Typography";
+import styled from "styled-components";
+import CatalogueButtons from "./CataloguesButtons.jsx";
+import HomeTable from "./HomeTable.jsx";
 
-const styles = theme => ({
-  root: {
-    display: "flex",
-    flexWrap: "wrap",
-    minWidth: 300,
-    width: "100%",
-    height: "calc(100vh - 64px)",
-    alignItems: "center"
-  },
-  image: {
-    position: "relative",
-    height: 300,
-    [theme.breakpoints.down("xs")]: {
-      width: "100% !important", // Overrides inline-style
-      height: 100
-    },
-    "&:hover, &$focusVisible": {
-      zIndex: 1,
-      "& $imageBackdrop": {
-        opacity: 0.15
-      },
-      "& $imageMarked": {
-        opacity: 0
-      },
-      "& $imageTitle": {
-        border: "4px solid currentColor"
-      }
-    }
-  },
-  focusVisible: {},
-  imageButton: {
-    position: "absolute",
-    left: 0,
-    right: 0,
-    top: 0,
-    bottom: 0,
-    display: "flex",
-    alignItems: "center",
-    justifyContent: "center",
-    color: theme.palette.common.white
-  },
-  imageSrc: {
-    position: "absolute",
-    left: 0,
-    right: 0,
-    top: 0,
-    bottom: 0,
-    backgroundSize: "cover",
-    backgroundPosition: "center 40%"
-  },
-  imageBackdrop: {
-    position: "absolute",
-    left: 0,
-    right: 0,
-    top: 0,
-    bottom: 0,
-    backgroundColor: theme.palette.common.black,
-    opacity: 0.4,
-    transition: theme.transitions.create("opacity")
-  },
-  imageTitle: {
-    position: "relative",
-    padding: `${theme.spacing.unit * 2}px ${theme.spacing.unit * 4}px ${theme
-      .spacing.unit + 6}px`
-  },
-  imageMarked: {
-    height: 3,
-    width: 18,
-    backgroundColor: theme.palette.common.white,
-    position: "absolute",
-    bottom: -2,
-    left: "calc(50% - 9px)",
-    transition: theme.transitions.create("opacity")
-  }
-});
+const Wrapper = styled.div`
+  min-height: 100vh;
+  background: #fff;
+  box-sizing: border-box;
+`;
+const HeroImage = styled.div`
+  background: linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)),
+    url("/assets/furniture.png");
+  background-size: cover;
+  min-height: 100vh;
+  background-position: center;
+  background-repeat: no-repeat;
+  position: relative;
+`;
 
-const images = [
-  {
-    url: "/assets/furniture.png",
-    title: "Furniture",
-    width: "33.33%",
-    id: "furniture"
-  },
-  {
-    url: "/assets/painting.png",
-    title: "Paintings",
-    width: "33.33%",
-    id: "paintings"
-  },
-  {
-    url: "/assets/jewellery.png",
-    title: "Jewellery",
-    width: "33.33%",
-    id: "jewellery"
+const HeroTitle = styled.div`
+  text-align: center;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  color: white;
+  > h1 {
+    margin: 10%;
+    font-size: 4em;
+    font-weight: 300;
   }
-];
+  > h3 {
+    font-size: 2em;
+    font-style: italic;
+    font-weight: 300;
+  }
+`;
+
+const ButtonLink = styled(Link)`
+  display: inline-block;
+  position: relative;
+  border: 2px solid #fff;
+  font-weight: 600;
+  background: rgba(0, 0, 0, 0.5);
+  color: #fff;
+  text-transform: uppercase;
+  letter-spacing: 1.5px;
+  padding: 0 10px;
+  height: 50px;
+  width: 25%;
+  line-height: 50px;
+  margin-top: 10%;
+  cursor: pointer;
+  outline: none;
+  text-decoration: none;
+`;
+
+const CatalogueContainer = styled.div`
+  background-color: #fff;
+  min-width: 100%;
+  position: relative;
+  min-height: 80vh;
+  /* display: flex;
+  align-items: center; */
+  /* justify-content: center; */
+  padding: 80px 0 0;
+`;
+const CatalogueTitle = styled.div`
+  text-align: center;
+  min-width: 100%;
+  > h1 {
+    margin: 0px 0 50px;
+    padding: 0 15px;
+    font-family: Proxima Nova, "proxima-nova", "Helvetica Neue", Helvetica,
+      sans-serif;
+    font-style: normal;
+    font-weight: 300;
+    font-size: 34px;
+    line-height: 48px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: #4a4a4a;
+    font-family: "brandon-grotesque", BrandonGrotesque, sans-serif;
+  }
+`;
+
+const Catalogues = styled.div`
+  margin-bottom: 30px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+`;
 
 class Home extends Component {
   render() {
-    const { classes } = this.props;
     return (
-      <div className={classes.root}>
-        {images.map(image => (
-          <Link
-            to={`/catalogue/${image.id}`}
-            key={image.title}
-            style={{ display: "block", width: image.width }}
-          >
-            <ButtonBase
-              focusRipple
-              className={classes.image}
-              focusVisibleClassName={classes.focusVisible}
-              style={{
-                width: "100%",
-                height: "200px"
-              }}
-            >
-              <span
-                className={classes.imageSrc}
-                style={{
-                  backgroundImage: `url(${image.url})`
-                }}
-              />
-              <span className={classes.imageBackdrop} />
-              <span className={classes.imageButton}>
-                <Typography
-                  component="span"
-                  variant="subtitle1"
-                  color="inherit"
-                  className={classes.imageTitle}
-                >
-                  {image.title}
-                  <span className={classes.imageMarked} />
-                </Typography>
-              </span>
-            </ButtonBase>
-          </Link>
-        ))}
-      </div>
+      <Wrapper>
+        <HeroImage>
+          <HeroTitle>
+            <h1>Welcome to VintageAntique</h1>
+            <h3>Explore the collection of masterpieces</h3>
+            <ButtonLink to={"/allProducts"}>View All</ButtonLink>
+          </HeroTitle>
+        </HeroImage>
+        <CatalogueContainer>
+          <CatalogueTitle>
+            <h1>Shop by Category</h1>
+          </CatalogueTitle>
+          <Catalogues>
+            <CatalogueButtons />
+          </Catalogues>
+        </CatalogueContainer>
+        <HomeTable />
+      </Wrapper>
     );
   }
 }
 
-Home.propTypes = {
-  classes: PropTypes.object.isRequired
-};
-
-export default withStyles(styles)(Home);
+export default Home;

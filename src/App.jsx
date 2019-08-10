@@ -5,7 +5,6 @@ import styled from "styled-components";
 import "./main.css";
 import Navbar from "./Navbar.jsx";
 import Navbar2 from "./Navbar2.jsx";
-// import FooterPage from "./FooterPage.jsx";
 import SignUp from "./SignUp.jsx";
 import LogIn from "./LogIn.jsx";
 import Home from "./Home.jsx";
@@ -13,11 +12,18 @@ import Catalogue from "./Catalogue.jsx";
 import ProductForm from "./ProductForm.jsx";
 import ProductDetails from "./ProductDetails.jsx";
 import SearchResults from "./SearchResults.jsx";
-import ShoppingCart from "./ShoppingCart.jsx";
+import ShoppingCart2 from "./ShoppingCart2.jsx";
 import Checkout from "./Checkout.jsx";
 import AddressForm from "./AddressForm.jsx";
 import PaymentForm from "./PaymentForm.jsx";
 import Review from "./Review.jsx";
+import Footer from "./Footer.jsx";
+
+const Wrapper = styled.div`
+  min-height: 100vh;
+  background: #fff;
+  box-sizing: border-box;
+`;
 
 class App extends Component {
   async componentDidMount() {
@@ -45,10 +51,10 @@ class App extends Component {
   renderProductForm = () => {
     return <ProductForm />;
   };
-  renderShoppingCart = routerData => {
+  renderShoppingCart2 = routerData => {
     const productId = routerData.match.params.productId;
     const catalogueId = routerData.match.params.catalogueId;
-    return <ShoppingCart id={productId} catalogueId={catalogueId} />;
+    return <ShoppingCart2 id={productId} catalogueId={catalogueId} />;
   };
   renderCheckout = () => {
     return <Checkout />;
@@ -67,7 +73,7 @@ class App extends Component {
     return (
       <BrowserRouter>
         {this.props.login ? (
-          <div>
+          <Wrapper>
             <Navbar />
             <Route exact={true} path="/" render={this.renderHome} />
             <Route
@@ -93,7 +99,7 @@ class App extends Component {
             <Route
               exact={true}
               path="/cart/catalogue/:catalogueId/product/:productId"
-              render={this.renderShoppingCart}
+              render={this.renderShoppingCart2}
             />
             <Route exact={true} path="/checkout" render={this.renderCheckout} />
             <Route
@@ -107,14 +113,14 @@ class App extends Component {
               render={this.renderPaymentForm}
             />
             <Route exact={true} path="/review" render={this.renderReview2} />
-            {/* <FooterPage /> */}
-          </div>
+            <Footer />
+          </Wrapper>
         ) : (
           <div>
             <Navbar2 />
             <SignUp />
             <LogIn />
-            {/* <FooterPage /> */}
+            <Footer />
           </div>
         )}
       </BrowserRouter>
