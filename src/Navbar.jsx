@@ -16,9 +16,9 @@ import AddShoppingCartIcon from "@material-ui/icons/AddShoppingCart";
 const styles = theme => ({
   root: {
     width: "100%",
-    position: "fixed",
-    zIndex: 1,
-    padding: 0
+    position: "sticky",
+    top: 0,
+    zIndex: 10
   },
   grow: {
     flexGrow: 1
@@ -116,9 +116,10 @@ class Navbar extends Component {
   };
   render() {
     const { classes, query, setLogout } = this.props;
+    console.log(classes.root);
     return (
       <div className={classes.root}>
-        <AppBar className="nav" position="fixed">
+        <AppBar>
           <Toolbar>
             <Typography
               className={classes.title}

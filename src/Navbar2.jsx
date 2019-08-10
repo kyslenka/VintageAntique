@@ -8,7 +8,10 @@ import { withStyles } from "@material-ui/core/styles";
 
 const styles = theme => ({
   root: {
-    width: "100%"
+    width: "100%",
+    position: "sticky",
+    top: 0,
+    zIndex: 10
   },
   grow: {
     flexGrow: 1
@@ -27,7 +30,7 @@ class Navbar2 extends Component {
     const { classes } = this.props;
     return (
       <div className={classes.root}>
-        <AppBar className="nav" position="static">
+        <AppBar className="nav">
           <Toolbar>
             <Typography
               className={classes.title}
