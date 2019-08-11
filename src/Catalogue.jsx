@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import PropTypes from "prop-types";
+import styled from "styled-components";
 import classNames from "classnames";
 import Button from "@material-ui/core/Button";
 import CssBaseline from "@material-ui/core/CssBaseline";
@@ -18,18 +19,18 @@ const styles = theme => ({
     padding: `${theme.spacing.unit * 8}px 0 ${theme.spacing.unit * 6}px`
   },
   layout: {
-    width: "auto",
-    padding: "100px 0",
-    marginLeft: theme.spacing.unit * 3,
-    marginRight: theme.spacing.unit * 3,
-    [theme.breakpoints.up(1100 + theme.spacing.unit * 3 * 2)]: {
-      width: 1100,
-      marginLeft: "auto",
-      marginRight: "auto"
-    }
+    width: "auto"
+    // padding: "100px 0",
+    // marginLeft: theme.spacing.unit * 3,
+    // marginRight: theme.spacing.unit * 3
+    // [theme.breakpoints.up(1100 + theme.spacing.unit * 3 * 2)]: {
+    //   width: 1100,
+    //   marginLeft: "auto",
+    //   marginRight: "auto"
+    // }
   },
   cardGrid: {
-    padding: "100px 0"
+    // padding: "40px 0"
   },
   card: {
     height: "100%",
@@ -43,6 +44,13 @@ const styles = theme => ({
     flexGrow: 1
   }
 });
+
+const Wrapper = styled.div`
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-start;
+  padding: 10px;
+`;
 
 class Catalogue extends Component {
   constructor() {
@@ -95,7 +103,7 @@ class Catalogue extends Component {
           </div>
           <div className={classNames(classes.layout, classes.cardGrid)}>
             {/* End hero unit */}
-            <Grid container spacing={40}>
+            <Wrapper>
               {catalogue.products.map(product => (
                 <ItemCard
                   key={product.id}
@@ -106,7 +114,7 @@ class Catalogue extends Component {
                   catalogueId={catalogue.id}
                 />
               ))}
-            </Grid>
+            </Wrapper>
           </div>
         </main>
       </React.Fragment>

@@ -29,3 +29,7 @@ header.cardMedia {
   right: 200px;
   background-color: white;
 }
+
+* {
+  box-sizing: border-box;
+}

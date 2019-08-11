@@ -29,20 +29,18 @@ class Navbar2 extends Component {
   render() {
     const { classes } = this.props;
     return (
-      <div className={classes.root}>
-        <AppBar className="nav">
-          <Toolbar>
-            <Typography
-              className={classes.title}
-              variant="h6"
-              color="inherit"
-              noWrap
-            >
-              VintageAntique
-            </Typography>
-          </Toolbar>
-        </AppBar>
-      </div>
+      <AppBar position="sticky">
+        <Toolbar>
+          <Typography
+            className={classes.title}
+            variant="h6"
+            color="inherit"
+            noWrap
+          >
+            VintageAntique
+          </Typography>
+        </Toolbar>
+      </AppBar>
     );
   }
 }

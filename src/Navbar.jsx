@@ -18,7 +18,8 @@ const styles = theme => ({
     width: "100%",
     position: "sticky",
     top: 0,
-    zIndex: 10
+    zIndex: 10,
+    backgroundColor: "#333"
   },
   grow: {
     flexGrow: 1
@@ -91,24 +92,8 @@ const styles = theme => ({
 });
 
 class Navbar extends Component {
-  // constructor(props) {
-  //   super(props);
-  //   this.state = { query: "" };
-  // }
   handleQueryChange = evt => {
-    // event.preventDefault();
-    // let data = new FormData();
-    // data.append("query", this.state.query);
-    // const response = await fetch("/query", {
-    //   method: "POST",
-    //   body: data,
-    //   creadentials: "include"
-    // });
-    // const body = await response.json();
-    this.props.dispatch({
-      type: "SET_QUERY",
-      query: evt.target.value
-    });
+    this.props.setQuery(evt);
     this.props.history.push("/searchResults");
   };
   handleIconChange = () => {
@@ -118,55 +103,53 @@ class Navbar extends Component {
     const { classes, query, setLogout } = this.props;
     console.log(classes.root);
     return (
-      <div className={classes.root}>
-        <AppBar>
-          <Toolbar>
-            <Typography
-              className={classes.title}
-              variant="h6"
-              color="inherit"
-              noWrap
-            >
-              VintageAntique
-            </Typography>
-            <div className={classes.navLink}>
-              <Link className={classes.link} to="/">
-                Home
-              </Link>
-              <Link className={classes.link} to="/catalogue">
-                Catalogue
-              </Link>
-              <Link className={classes.link} to="/sellItem">
-                Sell item
-              </Link>
+      <AppBar position="sticky">
+        <Toolbar>
+          <Typography
+            className={classes.title}
+            variant="h6"
+            color="inherit"
+            noWrap
+          >
+            VintageAntique
+          </Typography>
+          <div className={classes.navLink}>
+            <Link className={classes.link} to="/">
+              Home
+            </Link>
+            <Link className={classes.link} to="/catalogue">
+              Catalogue
+            </Link>
+            <Link className={classes.link} to="/sellItem">
+              Sell item
+            </Link>
+          </div>
+          <div className={classes.grow} />
+          <div className={classes.search}>
+            <div className={classes.searchIcon}>
+              <SearchIcon />
             </div>
-            <div className={classes.grow} />
-            <div className={classes.search}>
-              <div className={classes.searchIcon}>
-                <SearchIcon />
-              </div>
-              <InputBase
-                placeholder="Search…"
-                type="text"
-                onChange={this.handleQueryChange}
-                value={query}
-                classes={{
-                  root: classes.inputRoot,
-                  input: classes.inputInput
-                }}
-              />
-            </div>
-            <div className={classes.navLink}>
-              <Link onClick={setLogout} className={classes.link} to="/logout">
-                Log out
-              </Link>
-            </div>
-            <div>
-              <AddShoppingCartIcon onClick={this.handleIconChange} />
-            </div>
-          </Toolbar>
-        </AppBar>
-      </div>
+            <InputBase
+              placeholder="Search…"
+              type="text"
+              onChange={this.handleQueryChange}
+              value={query}
+              classes={{
+                root: classes.inputRoot,
+                input: classes.inputInput
+              }}
+            />
+          </div>
+          <div className={classes.navLink}>
+            <Link onClick={setLogout} className={classes.link} to="/logout">
+              Log out
+            </Link>
+          </div>
+          <div>
+            <AddShoppingCartIcon onClick={this.handleIconChange} />
+          </div>
+        </Toolbar>
+      </AppBar>
     );
   }
 }
@@ -181,7 +164,8 @@ function handleLogout(dispatch) {
 }
 
 const mapDispatchToProps = dispatch => ({
-  setLogout: () => handleLogout(dispatch)
+  setLogout: () => handleLogout(dispatch),
+  setQuery: evt => dispatch({ type: "SET_QUERY", query: evt.target.value })
 });
 
 const mapStateToProps = state => {
@@ -189,8 +173,10 @@ const mapStateToProps = state => {
 };
 
 export default withRouter(
-  connect(
-    mapStateToProps,
-    mapDispatchToProps
-  )(withStyles(styles)(Navbar))
+  withStyles(styles)(
+    connect(
+      mapStateToProps,
+      mapDispatchToProps
+    )(Navbar)
+  )
 );

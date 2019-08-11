@@ -24,7 +24,7 @@ const styles = theme => ({
     }
   },
   cardGrid: {
-    padding: `${theme.spacing.unit * 8}px 0`
+    padding: "40px 0"
   },
   card: {
     height: "100%",
@@ -60,25 +60,27 @@ class ItemCard extends Component {
     const { classes, image, title, price, id } = this.props;
     return (
       <Grid item key={title} sm={6} md={4} lg={3}>
-        <StyledCard>
-          <CardMedia
-            className={classes.cardMedia}
-            image={image}
-            title={title}
-          />
-          {/* <img src={image} /> */}
-          <CardContent className={classes.cardContent}>
-            <Typography gutterBottom variant="h6" component="h2">
-              {title}
-            </Typography>
-            <Typography>{price}</Typography>
-          </CardContent>
-          <CardActions>
-            <Button onClick={this.handleOnClick} size="small" color="primary">
-              View
-            </Button>
-          </CardActions>
-        </StyledCard>
+        <div style={{ padding: 10, height: "100%" }}>
+          <StyledCard style={{ padding: 10 }}>
+            <CardMedia
+              className={classes.cardMedia}
+              image={image}
+              title={title}
+            />
+            {/* <img src={image} /> */}
+            <CardContent className={classes.cardContent}>
+              <Typography gutterBottom variant="h6" component="h2">
+                {title}
+              </Typography>
+              <Typography>{price}</Typography>
+            </CardContent>
+            <CardActions>
+              <Button onClick={this.handleOnClick} size="small" color="primary">
+                View
+              </Button>
+            </CardActions>
+          </StyledCard>
+        </div>
       </Grid>
     );
   }

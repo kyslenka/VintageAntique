@@ -2642,3 +2642,320 @@ stripe.checkout.sessions.create({
                   </Grid>
                 </React.Fragment>
               ))}
+
+
+Navbar.jsx
+// This component is only responsible for shared formatting (position, height, logo, etc)
+class Navbar {
+  render() {
+      return (
+          <div class={classes.root}>
+              <Header>
+                  <div>
+                      <Logo>
+                  </div>
+                  <div>
+                      {this.props.children}
+                  </div>
+              </Header>
+          </div>
+      )
+  }
+}
+
+class LoggedInNavbar extends React.Component {
+  render() {
+      return (
+          <div className={classes.navLink}>
+            <Link className={classes.link} to="/">
+              Home
+            </Link>
+            <Link className={classes.link} to="/catalogue">
+              Catalogue
+            </Link>
+            <Link className={classes.link} to="/sellItem">
+              Sell item
+            </Link>
+          </div>
+          <div className={classes.grow} />
+          <div className={classes.search}>
+            <div className={classes.searchIcon}>
+              <SearchIcon />
+            </div>
+            <InputBase
+              placeholder="Search…"
+              type="text"
+              onChange={this.handleQueryChange}
+              value={query}
+              classes={{
+                root: classes.inputRoot,
+                input: classes.inputInput
+              }}
+            />
+          </div>
+          <div className={classes.navLink}>
+            <Link onClick={setLogout} className={classes.link} to="/logout">
+              Log out
+            </Link>
+          </div>
+          <div>
+            <AddShoppingCartIcon onClick={this.handleIconChange} />
+          </div>
+      )
+  }
+}
+
+
+
+// App.js
+
+{this.props.loggedIn
+  ? <Navbar><LoggedInNavbar /></Navbar>
+  : <Navbar><LoggedOutNavbar /></Navbar>
+}
+
+import React, { Component } from "react";
+import { Link } from "react-router-dom";
+import styled from "styled-components";
+
+const Wrapper = styled.div`
+  background: #eee;
+  min-height: 100vh;
+`;
+const Container = styled.div`
+  margin-right: auto;
+  margin-left: auto;
+  padding-left: 15px;
+  padding-right: 15px;
+  margin-bottom: 20px;
+  display: flex;
+`;
+const TitleContainer = styled.div`
+  width: 100%;
+  position: relative;
+  min-height: 1px;
+  padding-left: 15px;
+  padding-right: 15px;
+`;
+const Title = styled.div`
+  text-align: left;
+  > h2 {
+    font-size: 40px;
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+    line-height: 0.9;
+    margin-top: 23px;
+    margin-bottom: 11.5px;
+    font-weight: normal;
+    color: black;
+  }
+`;
+
+const Cart1Container = styled.div`
+  flex: 2;
+  /* position: relative; */
+  min-height: 1px;
+  padding-left: 15px;
+  padding-right: 15px;
+  /* width: 55%; */
+`;
+
+const ProductEmptyCart = styled.div`
+  background: #fff;
+  padding: 200px 50px;
+  text-align: center;
+  > h2 {
+    text-transform: uppercase;
+    font-size: 40px;
+  }
+  > p {
+    color: #666;
+    font-size: 24px;
+    text-transform: uppercase;
+  }
+`;
+const ButtonLink = styled(Link)`
+  display: inline-block;
+  cursor: pointer;
+  border: 1px solid black;
+  border-radius: 5px;
+  padding: 10px 12px;
+  font-size: 18px;
+  text-decoration: none;
+  color: black;
+  &:hover {
+    background-color: #eee;
+  }
+`;
+
+// const ProductItem = styled.div`
+//   margin-bottom: 20px;
+// `;
+const Article = styled.div`
+  background-color: #fff;
+  position: relative;
+  margin-bottom: 4px;
+  overflow: hidden;
+`;
+const ProductBox = styled.div`
+  min-height: 180px;
+  min-width: 280px;
+  display: flex;
+  /* flex: 2 auto auto; */
+  align-items: center;
+  /* justify-content: center; */
+`;
+const Image = styled.div`
+  flex: 1;
+  padding: 20px;
+`;
+
+const Details = styled.div`
+  flex: 2;
+  padding: 20px;
+  margin-bottom: auto;
+  > h4 {
+    font-weight: 500;
+    font-size: 20px;
+    text-transform: uppercase;
+    margin-top: 11.5px;
+    margin-bottom: 11.5px;
+    color: black;
+  }
+`;
+const Description = styled.div`
+  width: 500px;
+  display: flex;
+  justify-content: space-between;
+`;
+const ItemId = styled.div`
+  width: 33.33333333%;
+  float: left;
+  > p {
+    margin: 0 0 11.5px;
+  }
+  > span {
+    color: #757575;
+  }
+`;
+const Price = styled.div`
+  width: 33.33333333%;
+  float: left;
+  > p {
+    margin: 0 0 11.5px;
+  }
+`;
+const Remove = styled.div`
+  width: 43.33333333%;
+`;
+
+const Button = styled.button`
+  padding: 12px;
+  margin: 0;
+  border: 1px solid black;
+`;
+
+const Order = styled.div`
+  background: #fff;
+  margin-bottom: 20px;
+  width: 25%;
+`;
+const OrderDetails = styled.div`
+  > h4 {
+    margin: 10px 0;
+    padding: 0 20px;
+    text-transform: uppercase;
+    font-weight: 500;
+    font-size: 30px;
+  }
+`;
+const Summary = styled.div`
+  border-top: 4px solid #262626;
+  padding-top: 15px;
+  padding-bottom: 15px;
+`;
+const Subtotal = styled.div`
+  padding-left: 15px;
+  padding-right: 15px;
+`;
+class ShoppingCart2 extends Component {
+  render() {
+    return (
+      <Wrapper>
+        <TitleContainer>
+          <Title>
+            <h2>Shopping Bag</h2>
+          </Title>
+        </TitleContainer>
+        <Container>
+          <Cart1Container>
+            {/* <ProductEmptyCart>   
+                <h2>Your shopping cart is empty</h2>
+                <p>Fill it in with your favorite finds</p>
+                <ButtonLink to={"/allProducts"}>Start Shopping</ButtonLink>
+              </ProductEmptyCart> */}
+            {/* <ProductItem> */}
+            <Article>
+              <ProductBox>
+                <Image>
+                  <img src="/assets/furniture.png" style={{ width: "100%" }} />
+                  {/* {product.image} */}
+                </Image>
+                <Details>
+                  <h4>Victorian Sofa</h4>
+                  {/* <h4>{product.title}</h4> */}
+                  <Description>
+                    <ItemId>
+                      <p>Item Number</p>
+                      <span>2</span>
+                      {/* <span>{product.id}</span> */}
+                    </ItemId>
+                    <Price>
+                      <p>Price</p>
+                      <span>$1234</span>
+                      {/* <span>{product.price}</span> */}
+                    </Price>
+                    <Button>Remove</Button>
+                  </Description>
+                </Details>
+              </ProductBox>
+            </Article>
+            {/* </ProductItem> */}
+          </Cart1Container>
+          <Order>
+            <OrderDetails>
+              <h4>Order Summary</h4>
+              <Summary>
+                <Subtotal>
+                  <span>Item Price</span>
+                  <span>$1234</span>
+                  {/* <span>{product.price}</span> */}
+                </Subtotal>
+                <div />
+                <div />
+                <div />
+                <div />
+              </Summary>
+              <div />
+            </OrderDetails>
+          </Order>
+        </Container>
+      </Wrapper>
+    );
+  }
+}
+
+export default ShoppingCart2;
+
+<div style="background: #EEE; width: 500px; display: flex; justify-content: space-between;">
+  <button>1</button>
+  <button>2</button>
+  <button>3</button>
+</div>;
+
+{/* <ProductEmptyCart>   
+                <h2>Your shopping cart is empty</h2>
+                <p>Fill it in with your favorite finds</p>
+                <ButtonLink to={"/allProducts"}>Start Shopping</ButtonLink>
+              </ProductEmptyCart> */}
+            {/* <ProductItem> */}

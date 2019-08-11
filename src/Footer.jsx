@@ -3,7 +3,6 @@ import styled from "styled-components";
 import { Link } from "react-router-dom";
 
 const FooterWrapper = styled.div`
-  width: 100vw;
   min-height: 20vh;
   background: #333;
   color: #fff;
@@ -19,9 +18,8 @@ const FooterContainer = styled.div`
 `;
 
 const Container = styled.div`
-  width: 80%;
-  margin: 0 auto;
   text-align: center;
+  flex: 2;
 `;
 const TextLink = styled(Link)`
   color: #fff;
@@ -39,6 +37,8 @@ const TextLink = styled(Link)`
 const List = styled.ul`
   list-style-type: none;
   padding: 7px 25px;
+  max-width: 450px;
+  margin: 0 auto;
 `;
 
 const Footer = () => {
@@ -48,7 +48,8 @@ const Footer = () => {
         <Container>
           <div
             style={{
-              width: "450px",
+              maxWidth: 450,
+              margin: "0 auto",
               marginBottom: "20px",
               fontSize: "20px",
               fontFamily: "Times, Times New Roman, serif"
@@ -70,7 +71,7 @@ const Footer = () => {
             Copyright &copy; 2019 VintageAntique
           </div>
         </Container>
-        <Container>
+        <Container style={{ flex: 1 }}>
           <List>
             <li>
               <TextLink to={"/catalogue/furniture"}>Furniture</TextLink>
@@ -88,7 +89,6 @@ const Footer = () => {
             <li>
               <div
                 style={{
-                  width: "450px",
                   padding: "7px 25px",
                   fontSize: "20px",
                   fontFamily: "Times, Times New Roman, serif"
@@ -121,7 +121,6 @@ const Footer = () => {
             </li>
           </List>
         </Container>
-        <Container />
       </FooterContainer>
     </FooterWrapper>
   );

@@ -18,6 +18,7 @@ import AddressForm from "./AddressForm.jsx";
 import PaymentForm from "./PaymentForm.jsx";
 import Review from "./Review.jsx";
 import Footer from "./Footer.jsx";
+import Products from "./Products.jsx";
 
 const Wrapper = styled.div`
   min-height: 100vh;
@@ -25,6 +26,9 @@ const Wrapper = styled.div`
   box-sizing: border-box;
 `;
 
+const Routes = styled.div`
+  min-height: calc(100vh - 64px - 150px);
+`;
 class App extends Component {
   async componentDidMount() {
     const response = await fetch("/session");
@@ -68,6 +72,9 @@ class App extends Component {
   renderReview = () => {
     return <Review />;
   };
+  renderProducts = () => {
+    return <Products />;
+  };
   render() {
     console.log(this.props);
     return (
@@ -75,44 +82,55 @@ class App extends Component {
         {this.props.login ? (
           <Wrapper>
             <Navbar />
-            <Route exact={true} path="/" render={this.renderHome} />
-            <Route
-              exact={true}
-              path="/searchResults"
-              render={this.renderSearchResults}
-            />
-            <Route
-              exact={true}
-              path="/catalogue/:catalogueId"
-              render={this.renderCatalogue}
-            />
-            <Route
-              exact={true}
-              path="/catalogue/:catalogueId/product/:productId"
-              render={this.renderProductDetails}
-            />
-            <Route
-              exact={true}
-              path="/sellItem"
-              render={this.renderProductForm}
-            />
-            <Route
-              exact={true}
-              path="/cart/catalogue/:catalogueId/product/:productId"
-              render={this.renderShoppingCart2}
-            />
-            <Route exact={true} path="/checkout" render={this.renderCheckout} />
-            <Route
-              exact={true}
-              path="/addressForm"
-              render={this.renderAddressForm}
-            />
-            <Route
-              exact={true}
-              path="/paymentForm"
-              render={this.renderPaymentForm}
-            />
-            <Route exact={true} path="/review" render={this.renderReview2} />
+            <Routes>
+              <Route exact={true} path="/" render={this.renderHome} />
+              <Route
+                exact={true}
+                path="/searchResults"
+                render={this.renderSearchResults}
+              />
+              <Route
+                exact={true}
+                path="/catalogue/:catalogueId"
+                render={this.renderCatalogue}
+              />
+              <Route
+                exact={true}
+                path="/catalogue/:catalogueId/product/:productId"
+                render={this.renderProductDetails}
+              />
+              <Route
+                exact={true}
+                path="/sellItem"
+                render={this.renderProductForm}
+              />
+              <Route
+                exact={true}
+                path="/cart/catalogue/:catalogueId/product/:productId"
+                render={this.renderShoppingCart2}
+              />
+              <Route
+                exact={true}
+                path="/checkout"
+                render={this.renderCheckout}
+              />
+              <Route
+                exact={true}
+                path="/addressForm"
+                render={this.renderAddressForm}
+              />
+              <Route
+                exact={true}
+                path="/paymentForm"
+                render={this.renderPaymentForm}
+              />
+              <Route exact={true} path="/review" render={this.renderReview2} />
+              <Route
+                exact={true}
+                path="/allProducts"
+                render={this.renderProducts}
+              />
+            </Routes>
             <Footer />
           </Wrapper>
         ) : (

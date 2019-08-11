@@ -10,20 +10,18 @@ const Wrapper = styled.div`
   padding: 10px;
 `;
 
-class SearchResults extends Component {
+class Products extends Component {
   render() {
-    const { catalogues, query } = this.props;
+    const { catalogues } = this.props;
     const productsArray = catalogues.map(catalogue => {
       return catalogue.products;
     });
     const products = [].concat(...productsArray);
-    const results = products.filter(product => {
-      return product.title.toLowerCase().includes(query.toLowerCase());
-    });
+    console.log(products);
     return (
       <div>
         <Wrapper>
-          {results.map(product => {
+          {products.map(product => {
             const catalogue = catalogues.find(c => {
               return c.products.some(p => p.id === product.id);
             });
@@ -44,7 +42,7 @@ class SearchResults extends Component {
 }
 
 const mapStateToProps = state => {
-  return { catalogues: state.catalogues, query: state.query };
+  return { catalogues: state.catalogues };
 };
 
-export default connect(mapStateToProps)(SearchResults);
+export default connect(mapStateToProps)(Products);
