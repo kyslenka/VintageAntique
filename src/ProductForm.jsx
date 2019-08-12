@@ -10,32 +10,14 @@ const options = [
 ];
 
 const CardProduct = styled.div`
-  margin-left: auto;
-  margin-right: auto;
-  width: 50%;
-  overflow: hidden;
-  background: #fff;
-  box-shadow: 0px 2px 4px 0px #ddd;
-  margin: 20px;
-  border-radius: var(--border-radius);
-  text-align: center;
-`;
-
-// const Card = styled.div`
-//   overflow: hidden;
-//   background: #fff;
-//   box-shadow: 0px 2px 4px 0px #ddd;
-//   margin: 20px;
-//   border-radius: var(--border-radius);
-//   text-align: center;
-// `;
-
-const CardTitle = styled.h1`
-  margin: 0;
+  max-width: 500px;
+  padding: 10px 20px;
+  background: #f4f7f8;
+  margin: 10px auto;
   padding: 20px;
-  background: #3f51b5;
-  color: #fff;
-  font-size: 1.6rem;
+  background: #f4f7f8;
+  border-radius: 8px;
+  font-family: Georgia, "Times New Roman", Times, serif;
 `;
 
 const CardBody = styled.div`
@@ -43,57 +25,48 @@ const CardBody = styled.div`
   margin: 20px;
 `;
 
-const Form = styled.form`
-  width: 90%;
-  min-width: 300px;
-  text-align: left;
-  margin-left: auto;
-  margin-right: auto;
-`;
-
 const FormInput = styled.input`
-  width: 95%;
-  border: 1px solid;
-  border-radius: 5px;
+  font-family: Georgia, "Times New Roman", Times, serif;
+  background: rgba(255, 255, 255, 0.1);
+  border: none;
+  border-radius: 4px;
+  font-size: 16px;
+  margin: 0;
+  outline: 0;
   padding: 10px;
-  margin: 10px 0;
+  width: 100%;
+  box-sizing: border-box;
+  background-color: #fff;
+  color: #8a97a0;
+  box-shadow: 0 1px 0 rgba(0, 0, 0, 0.03) inset;
+  margin-bottom: 30px;
+  :focus {
+    background: #dceefb;
+  }
 `;
 const TextArea = styled.textarea`
-  width: 95%;
-  height: 100px;
-  border: 1px solid;
-  border-radius: 5px;
+  font-family: Georgia, "Times New Roman", Times, serif;
+  background: rgba(255, 255, 255, 0.1);
+  border: none;
+  border-radius: 4px;
+  font-size: 16px;
+  margin: 0;
+  outline: 0;
   padding: 10px;
-  margin: 10px 0;
+  width: 100%;
+  box-sizing: border-box;
+  background-color: #fff;
+  color: #8a97a0;
+  box-shadow: 0 1px 0 rgba(0, 0, 0, 0.03) inset;
+  margin-bottom: 30px;
+  &:focus {
+    background: #dceefb;
+  }
 `;
 
 const Center = styled.div`
   text-align: center;
 `;
-
-// const buttonStyles = css`
-//   padding: 10px 20px;
-//   border-radius: var(--border-radius);
-//   cursor: pointer;
-//   border: none;
-//   color: #fff;
-//   font-size: 1rem;
-//   background: var(--primary-color);
-//   outline: none;
-//   text-decoration: none;
-// `;
-
-// const Button = styled.button`
-//   ${buttonStyles}
-// `;
-// export const FormButton = styled.button`
-//   margin: 10px 0;
-//   padding: 10px;
-//   border: 1px solid #ddd;
-//   border-radius: 6px;
-//   cursor: pointer;
-//   width: ${(props) => (props.wide ? '100%' : 'auto')};
-// `;
 
 const SubmitButton = styled.button`
   width: 100%;
@@ -107,6 +80,9 @@ const SubmitButton = styled.button`
   background: #3f51b5;
   outline: none;
   text-decoration: none;
+  &:hover {
+    background: lightgrey;
+  }
 `;
 
 const Wrapper = styled.div`
@@ -115,6 +91,26 @@ const Wrapper = styled.div`
   margin: 20px 0;
   border-radius: 6px;
   position: relative;
+`;
+
+const FileInput = styled.input`
+  opacity: 0;
+  overflow: hidden;
+  position: absolute;
+  z-index: -1;
+  cursor: pointer;
+  &:focus {
+    background-color: red;
+  }
+`;
+const FileLabel = styled.label`
+  overflow: hidden;
+  color: #8a97a0;
+  border-radius: 0.5em;
+  padding: 10px;
+  &:hover {
+    background-color: #dceefb;
+  }
 `;
 
 class ProductForm extends Component {
@@ -138,9 +134,6 @@ class ProductForm extends Component {
   handlePriceChange = event => {
     this.setState({ price: event.target.value });
   };
-  // handleLocationChange = event => {
-  //   this.setState({ location: event.target.value });
-  // };
   handleCategoryChange = selectedOption => {
     this.setState({ selectedOption });
     console.log("Option selected:", selectedOption);
@@ -155,7 +148,6 @@ class ProductForm extends Component {
     data.append("title", this.state.title);
     data.append("img", this.state.image);
     data.append("price", this.state.price);
-    // data.append("location", this.state.location);
     data.append("category", this.state.selectedOption.value);
     data.append("description", this.state.description);
     await fetch("/newitem", {
@@ -168,82 +160,84 @@ class ProductForm extends Component {
   render() {
     return (
       <CardProduct>
-        <CardTitle>Fill this form to sell your item</CardTitle>
-        <CardBody>
-          <Form onSubmit={this.handleSubmit}>
-            <Wrapper>
-              <div>
-                <label>
-                  Product Name
-                  <FormInput
-                    onChange={this.handleTitleChange}
-                    value={this.state.title}
-                    type="text"
-                    placeholder="Type your product name"
-                  />
-                </label>
-              </div>
-              <div>
-                <label>
-                  <div>
-                    Product Image
-                    {/* <button>Upload a file</button> */}
-                    <input onChange={this.handleImageChange} type="file" />
-                  </div>
-                </label>
-              </div>
-              <div>
-                <label>
-                  Price
-                  <FormInput
-                    onChange={this.handlePriceChange}
-                    type="text"
-                    value={this.state.price}
-                  />
-                </label>
-              </div>
-              {/* <label>
-                Seller Location
-                <FormInput
-                  onChange={this.handleLocationChange}
-                  type="text"
-                  value={this.state.location}
-                />
-              </label> */}
-              <label>
-                Choose the Category
-                <Select
-                  value={this.state.selectedOption}
-                  onChange={this.handleCategoryChange}
-                  options={options}
-                />
-              </label>
-              <label>
-                Product Description
-                <textarea
-                  onChange={this.handleDescriptionChange}
-                  type="textarea"
-                  value={this.state.decsription}
-                  placeholder="Type the description of your item"
-                  cols={80}
-                  rows={10}
-                  style={{
-                    fontFamily: "Times New Roman",
-                    fontSize: "14px",
-                    padding: "10px",
-                    margin: "10px 0",
-                    display: "block"
-                  }}
-                />
-              </label>
-              <div>
-                <Center>
-                  <SubmitButton>Add Item</SubmitButton>
-                </Center>
-              </div>
-            </Wrapper>
-          </Form>
-        </CardBody>
+        <form onSubmit={this.handleSubmit}>
+          <Wrapper>
+            <label style={{ display: "block", marginBottom: 8 }}>
+              Product Name
+            </label>
+            <FormInput
+              onChange={this.handleTitleChange}
+              value={this.state.title}
+              type="text"
+              placeholder="Type product name"
+            />
+            <label style={{ display: "block", marginBottom: 14 }}>
+              Product Image
+            </label>
+            <FileLabel>
+              {" "}
+              Upload your file
+              <input
+                onChange={this.handleImageChange}
+                type="file"
+                style={{
+                  cursor: "pointer",
+                  width: 0.1,
+                  opacity: 0
+                }}
+              />
+            </FileLabel>
+            <label style={{ display: "block", marginBottom: 8, marginTop: 20 }}>
+              Product Price
+            </label>
+            <FormInput
+              onChange={this.handlePriceChange}
+              type="text"
+              value={this.state.price}
+              placeholder="Type product price"
+            />
+            <label style={{ display: "block", marginBottom: 8 }}>
+              Choose the Category
+            </label>
+            <Select
+              value={this.state.selectedOption}
+              onChange={this.handleCategoryChange}
+              options={options}
+            />
+            <label style={{ display: "block", marginBottom: 8 }}>
+              Product Description
+            </label>
+            <textarea
+              onChange={this.handleDescriptionChange}
+              type="textarea"
+              value={this.state.decsription}
+              placeholder="Type product description"
+              cols={80}
+              rows={8}
+              style={{
+                fontFamily: "Times New Roman",
+                fontSize: 18,
+                padding: 10,
+                margin: 0,
+                outline: 0,
+                display: "block",
+                width: "100%",
+                boxSizing: "border-box",
+                background: "rgba(255, 255, 255, 0.1)",
+                border: "none",
+                borderRadius: 4,
+                backgroundColor: "#fff",
+                color: "#8a97a0",
+                boxShadow: "0 1px 0 rgba(0, 0, 0, 0.03) inset",
+                marginBottom: 30,
+                transition: "all 0.30s ease-in-out"
+              }}
+            />
+            <Center>
+              <SubmitButton>Submit</SubmitButton>
+            </Center>
+          </Wrapper>
+        </form>
       </CardProduct>
     );
   }

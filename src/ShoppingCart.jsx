@@ -172,7 +172,6 @@ class ShoppingCart extends Component {
         <Button
           type="button"
           onClick={this.handleOnClickCheckout}
-          // disabled={hasProducts ? "disabled" : ""}
         >
           Checkout
         </Button>

@@ -4,13 +4,12 @@ import { connect } from "react-redux";
 import styled from "styled-components";
 import "./main.css";
 import Navbar from "./Navbar.jsx";
-import Navbar2 from "./Navbar2.jsx";
 import SignUp from "./SignUp.jsx";
 import LogIn from "./LogIn.jsx";
 import Home from "./Home.jsx";
 import Catalogue from "./Catalogue.jsx";
 import ProductForm from "./ProductForm.jsx";
-import ProductDetails from "./ProductDetails.jsx";
+import ProductDetails2 from "./ProductDetails2.jsx";
 import SearchResults from "./SearchResults.jsx";
 import ShoppingCart2 from "./ShoppingCart2.jsx";
 import Checkout from "./Checkout.jsx";
@@ -47,10 +46,10 @@ class App extends Component {
     const catalogueId = routerData.match.params.catalogueId;
     return <Catalogue id={catalogueId} />;
   };
-  renderProductDetails = routerData => {
+  renderProductDetails2 = routerData => {
     const productId = routerData.match.params.productId;
     const catalogueId = routerData.match.params.catalogueId;
-    return <ProductDetails id={productId} catalogueId={catalogueId} />;
+    return <ProductDetails2 id={productId} catalogueId={catalogueId} />;
   };
   renderProductForm = () => {
     return <ProductForm />;
@@ -97,7 +96,7 @@ class App extends Component {
               <Route
                 exact={true}
                 path="/catalogue/:catalogueId/product/:productId"
-                render={this.renderProductDetails}
+                render={this.renderProductDetails2}
               />
               <Route
                 exact={true}
@@ -135,7 +134,7 @@ class App extends Component {
           </Wrapper>
         ) : (
           <div>
-            <Navbar2 />
+            <Navbar />
             <SignUp />
             <LogIn />
             <Footer />

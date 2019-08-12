@@ -103,53 +103,70 @@ class Navbar extends Component {
     const { classes, query, setLogout } = this.props;
     console.log(classes.root);
     return (
-      <AppBar position="sticky">
-        <Toolbar>
-          <Typography
-            className={classes.title}
-            variant="h6"
-            color="inherit"
-            noWrap
-          >
-            VintageAntique
-          </Typography>
-          <div className={classes.navLink}>
-            <Link className={classes.link} to="/">
-              Home
-            </Link>
-            <Link className={classes.link} to="/catalogue">
-              Catalogue
-            </Link>
-            <Link className={classes.link} to="/sellItem">
-              Sell item
-            </Link>
-          </div>
-          <div className={classes.grow} />
-          <div className={classes.search}>
-            <div className={classes.searchIcon}>
-              <SearchIcon />
-            </div>
-            <InputBase
-              placeholder="Search…"
-              type="text"
-              onChange={this.handleQueryChange}
-              value={query}
-              classes={{
-                root: classes.inputRoot,
-                input: classes.inputInput
-              }}
-            />
-          </div>
-          <div className={classes.navLink}>
-            <Link onClick={setLogout} className={classes.link} to="/logout">
-              Log out
-            </Link>
-          </div>
-          <div>
-            <AddShoppingCartIcon onClick={this.handleIconChange} />
-          </div>
-        </Toolbar>
-      </AppBar>
+      <>
+        {this.props.login ? (
+          <AppBar position="sticky">
+            <Toolbar>
+              <Typography
+                className={classes.title}
+                variant="h6"
+                color="inherit"
+                noWrap
+              >
+                VintageAntique
+              </Typography>
+              <div className={classes.navLink}>
+                <Link className={classes.link} to="/">
+                  Home
+                </Link>
+                <Link className={classes.link} to="/catalogue">
+                  Catalogue
+                </Link>
+                <Link className={classes.link} to="/sellItem">
+                  Sell item
+                </Link>
+              </div>
+              <div className={classes.grow} />
+              <div className={classes.search}>
+                <div className={classes.searchIcon}>
+                  <SearchIcon />
+                </div>
+                <InputBase
+                  placeholder="Search…"
+                  type="text"
+                  onChange={this.handleQueryChange}
+                  value={query}
+                  classes={{
+                    root: classes.inputRoot,
+                    input: classes.inputInput
+                  }}
+                />
+              </div>
+              <div className={classes.navLink}>
+                <Link onClick={setLogout} className={classes.link} to="/logout">
+                  Log out
+                </Link>
+              </div>
+              <div>
+                <AddShoppingCartIcon onClick={this.handleIconChange} />
+              </div>
+            </Toolbar>
+          </AppBar>
+        ) : (
+          <AppBar position="sticky">
+            <Toolbar>
+              <Typography
+                className={classes.title}
+                variant="h6"
+                color="inherit"
+                noWrap
+              >
+                VintageAntique
+              </Typography>
+            </Toolbar>
+          </AppBar>
+        )}
+      </>
     );
   }
 }
@@ -169,7 +186,7 @@ const mapDispatchToProps = dispatch => ({
 });
 
 const mapStateToProps = state => {
-  return { query: state.query };
+  return { query: state.query, login: state.loggedIn };
 };
 
 export default withRouter(
