@@ -1,6 +1,7 @@
 import React from "react";
 import styled from "styled-components";
 import { Link } from "react-router-dom";
+import Icon from "@material-ui/core/Icon";
 
 const FooterWrapper = styled.div`
   background: #333;
@@ -28,7 +29,6 @@ const TextLink = styled(Link)`
   cursor: pointer;
   font-size: 20px;
   font-family: "Times, Times New Roman, serif";
-
   &:hover {
     color: #ddd;
   }
@@ -54,8 +54,11 @@ const Footer = () => {
               fontFamily: "Times, Times New Roman, serif"
             }}
           >
-            The VintageAntique is a top marketplace to buy and sell antiques
-            online.
+            The{" "}
+            <span style={{ fontFamily: "Parisienne, cursive" }}>
+              VintageAntique
+            </span>{" "}
+            is a top marketplace to buy and sell antiques online.
             <span>
               Our mission is to help you find a unique masterpiece to satisfy
               all your demands.
@@ -64,7 +67,7 @@ const Footer = () => {
           <div
             style={{
               fontSize: "20px",
-              fontFamily: "Georgia, Palatino, serif"
+              fontFamily: "Times, Times New Roman, serif"
             }}
           >
             Copyright &copy; 2019 VintageAntique
@@ -93,7 +96,10 @@ const Footer = () => {
                   fontFamily: "Times, Times New Roman, serif"
                 }}
               >
-                Address: 528 Parc Avenue, New York, NY 10031, US
+                <Icon style={{ fontSize: 22, paddingTop: 3, marginRight: 10 }}>
+                  home
+                </Icon>{" "}
+                528 Parc Avenue, New York, NY 10031, US
               </div>
             </li>
             <li>
@@ -104,7 +110,10 @@ const Footer = () => {
                   fontFamily: "Times, Times New Roman, serif"
                 }}
               >
-                e-mail: info@vintageantique.com
+                <Icon style={{ fontSize: 22, paddingTop: 3, marginRight: 10 }}>
+                  mail_outline
+                </Icon>
+                info@vintageantique.com
               </div>
             </li>
             <li>
@@ -115,7 +124,10 @@ const Footer = () => {
                   fontFamily: "Times, Times New Roman, serif"
                 }}
               >
-                Tel.:+ 01 298 742 88
+                <Icon style={{ fontSize: 22, paddingTop: 3, marginRight: 10 }}>
+                  phone
+                </Icon>
+                + 01 298 742 88
               </div>
             </li>
           </List>

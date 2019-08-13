@@ -24,13 +24,14 @@ const styles = theme => ({
   },
   link: {
     color: "#fff",
+    fontFamily: "Georgia, Palatino, serif",
     textDecoration: "none",
     display: "flex",
     alignItems: "center",
     padding: "10px",
     fontSize: "18px",
     "&:hover": {
-      color: "#ccc"
+      color: "#b5bdbf"
     }
   }
 });
@@ -87,7 +88,13 @@ class DropdownMenu extends React.Component {
               >
                 <Paper>
                   <ClickAwayListener onClickAway={this.handleClose}>
-                    <MenuList style={{ backgroundColor: "lightBlue" }}>
+                    <MenuList
+                      style={{
+                        backgroundColor: "#626667",
+                        border: "3px solid #626667",
+                        borderRadius: 3
+                      }}
+                    >
                       <MenuItem onClick={this.handleClose}>
                         <Link
                           className={classes.link}

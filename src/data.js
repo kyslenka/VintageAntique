@@ -62,7 +62,7 @@ const initialCatalogues = [
         id: 6
       },
       {
-        title: "Louis XVI style Gossip Bench",
+        title: "Louis XVI Style Gossip Bench",
         description:
           "French Louis XVI style gilt gossip seat. Two chairs side to side, perfect for a gossip. Hand carved gilt frame and upholstered in pale fabric.",
         price: "$2900",
@@ -134,7 +134,7 @@ const initialCatalogues = [
         id: 14
       },
       {
-        title: "Portrait miniature of a young couple",
+        title: "Young Couple Miniature Portrait",
         description:
           "This watercolour on ivory of early 19th century is beautifully painted with excellent colours and of lovely quality. The frame (4 x 3 inches) is solid heavy ivory with a gold surround or bezel.",
         price: "$2000",
@@ -142,7 +142,7 @@ const initialCatalogues = [
         id: 15
       },
       {
-        title: "Mother and her brood",
+        title: "Mother and Her Brood",
         description:
           "19th century oil painting by Henry Schouten amous for his animal and chicken paintings. Signed, frame size: 35.5 x 40.25 inches.",
         price: "$1500",
@@ -150,7 +150,7 @@ const initialCatalogues = [
         id: 16
       },
       {
-        title: "Japanese silk embroidery picture",
+        title: "Japanese Silk Embroidery Picture",
         description:
           "A superb Japanese silk embroidery picture of late 19th century using long and short stitch, with a pair of tigers stealthily moving through the forest. Frame size: 41¾ x 31 inches.",
         price: "$1250",
@@ -222,7 +222,7 @@ const initialCatalogues = [
         id: 24
       },
       {
-        title: "Art deco box signed Janesich Paris",
+        title: "Art Deco Box Signed Janesich Paris",
         description:
           "Box set with rose-cut diamonds. Pushbutton crimped with rods sapphires. Circa 1935. (Gross) weight: 68 grams, 2 x 1 inches.",
         price: "$1000",
@@ -230,7 +230,7 @@ const initialCatalogues = [
         id: 25
       },
       {
-        title: "Gothic revival earings, cornelian cameos",
+        title: "Gothic Revival Earings, Cornelian Cameos",
         description:
           "Pair of Gothic Revival earrings including frames embellished with enamel. 19th century. Total weight (gross): 10.85 grams, 1 x 1 inches.",
         price: "$1250",

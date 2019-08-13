@@ -91,17 +91,15 @@ class ItemCard extends Component {
               <Typography gutterBottom variant="h6" component="h2">
                 {title}
               </Typography>
-              <Typography>{price}</Typography>
+              <Typography style={{ fontSize: 16, fontWeight: 600 }}>
+                {price}
+              </Typography>
             </CardContent>
             <CardActions style={{ justifyContent: "space-between" }}>
-              <Button onClick={this.handleOnClick} size="small" color="#bbb2b2">
+              <Button onClick={this.handleOnClick} size="medium">
                 View
               </Button>
-              <Button
-                onClick={this.handleOnClickAdd}
-                size="small"
-                color="#bbb2b2"
-              >
+              <Button onClick={this.handleOnClickAdd} size="medium">
                 Add to Cart
               </Button>
             </CardActions>

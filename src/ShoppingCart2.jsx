@@ -41,9 +41,6 @@ const Title = styled.div`
     font-size: 40px;
     text-transform: uppercase;
     letter-spacing: 0.04em;
-    line-height: 0.9;
-    margin-top: 23px;
-    margin-bottom: 11.5px;
     font-weight: normal;
     color: black;
   }
@@ -60,7 +57,7 @@ const Container = styled.div`
   background-color: #fff;
   padding: 15px 0;
   position: relative;
-  margin-bottom: 4px;
+  margin-bottom: 8px;
   overflow: hidden;
   /* margin-right: auto;
   margin-left: auto;
@@ -112,6 +109,7 @@ const Description = styled.div`
   justify-content: space-between;
 `;
 const ItemId = styled.div`
+  font-family: Arial, Helvetica, sans-serif;
   width: 30%;
   > p {
     margin: 0 0 11.5px;
@@ -122,27 +120,29 @@ const ItemId = styled.div`
   }
 `;
 const Price = styled.div`
+  font-family: Arial, Helvetica, sans-serif;
   width: 30%;
   > p {
     margin: 0 0 11.5px;
     font-size: 18px;
   }
 `;
-const Remove = styled.div``;
 
 const Button = styled.button`
   padding: 10px 20px;
   border-radius: 5px;
   cursor: pointer;
   border: none;
-  font-size: 18px;
+  font-size: 14px;
   font-weight: 500;
-  background: lightgray;
+  background: #d4d3d3;
   outline: none;
   text-decoration: none;
+  text-transform: uppercase;
+  font-family: Arial, Helvetica, sans-serif;
   color: black;
   &:hover {
-    background: lightblue;
+    background: #e2dfdf;
   }
   /* padding: 12px;
   margin: 0;
@@ -161,7 +161,6 @@ const Order = styled.div`
 const OrderDetails = styled.div`
   > h4 {
     margin: 10px 0;
-    padding: 0 20px;
     text-transform: uppercase;
     font-weight: 500;
     font-size: 26px;

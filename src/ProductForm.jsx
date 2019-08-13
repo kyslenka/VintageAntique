@@ -10,14 +10,15 @@ const options = [
 ];
 
 const CardProduct = styled.div`
-  max-width: 500px;
+  max-width: 600px;
   padding: 10px 20px;
   background: #f4f7f8;
-  margin: 10px auto;
+  margin: 20px auto;
   padding: 20px;
   background: #f4f7f8;
   border-radius: 8px;
-  font-family: Georgia, "Times New Roman", Times, serif;
+  font-family: "Roboto", "Helvetica", "Arial", sans-serif;
+  box-shadow: 0 -6px 0 #fff, 0 1px 6px rgba(0, 0, 0, 0.35);
 `;
 
 const CardBody = styled.div`
@@ -26,7 +27,7 @@ const CardBody = styled.div`
 `;
 
 const FormInput = styled.input`
-  font-family: Georgia, "Times New Roman", Times, serif;
+  font-family: "Roboto", "Helvetica", "Arial", sans-serif;
   background: rgba(255, 255, 255, 0.1);
   border: none;
   border-radius: 4px;
@@ -45,7 +46,7 @@ const FormInput = styled.input`
   }
 `;
 const TextArea = styled.textarea`
-  font-family: Georgia, "Times New Roman", Times, serif;
+  font-family: "Roboto", "Helvetica", "Arial", sans-serif;
   background: rgba(255, 255, 255, 0.1);
   border: none;
   border-radius: 4px;
@@ -71,17 +72,24 @@ const Center = styled.div`
 const SubmitButton = styled.button`
   width: 100%;
   margin-top: 20px;
-  padding: 10px 20px;
+  padding: 14px 20px;
   border-radius: 5px;
   border: 2px;
   color: #fff;
   cursor: pointer;
   font-size: 1rem;
+  font-weight: 500;
   background: #3f51b5;
   outline: none;
   text-decoration: none;
+  text-transform: uppercase;
+  transition: background-color 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms,
+    box-shadow 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms,
+    border 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
+  box-shadow: 0px 1px 5px 0px rgba(0, 0, 0, 0.2),
+    0px 2px 2px 0px rgba(0, 0, 0, 0.14), 0px 3px 1px -2px rgba(0, 0, 0, 0.12);
   &:hover {
-    background: lightgrey;
+    background: #35449a;
   }
 `;
 
@@ -116,6 +124,8 @@ const FileLabel = styled.label`
 class ProductForm extends Component {
   constructor(props) {
     super(props);
+    this.handleSubmit = this.handleSubmit.bind(this);
+    this.fileInput = React.createRef();
     this.state = {
       image: null,
       title: "",
@@ -130,6 +140,7 @@ class ProductForm extends Component {
   };
   handleImageChange = event => {
     this.setState({ image: event.target.files[0] });
+    alert(`Selected file - ${this.fileInput.current.files[0].name}`);
   };
   handlePriceChange = event => {
     this.setState({ price: event.target.value });
@@ -176,10 +187,11 @@ class ProductForm extends Component {
             </label>
             <FileLabel>
               {" "}
-              Upload your file
+              Upload file:
               <input
                 onChange={this.handleImageChange}
                 type="file"
+                ref={this.fileInput}
                 style={{
                   cursor: "pointer",
                   width: 0.1,
@@ -203,8 +215,9 @@ class ProductForm extends Component {
               value={this.state.selectedOption}
               onChange={this.handleCategoryChange}
               options={options}
+              style={{ fontFamily: "Roboto, Helvetica, Arial, sans-serif" }}
             />
-            <label style={{ display: "block", marginBottom: 8 }}>
+            <label style={{ display: "block", marginBottom: 8, marginTop: 30 }}>
               Product Description
             </label>
             <textarea
@@ -215,8 +228,8 @@ class ProductForm extends Component {
               cols={80}
               rows={6}
               style={{
-                fontFamily: "Times New Roman",
-                fontSize: 18,
+                fontFamily: "Roboto, Helvetica, Arial, sans-serif",
+                fontSize: 16,
                 padding: 10,
                 margin: 0,
                 outline: 0,

@@ -11,7 +11,7 @@ import InputBase from "@material-ui/core/InputBase";
 import { fade } from "@material-ui/core/styles/colorManipulator";
 import { withStyles } from "@material-ui/core/styles";
 import SearchIcon from "@material-ui/icons/Search";
-import AddShoppingCartIcon from "@material-ui/icons/AddShoppingCart";
+import Icon from "@material-ui/core/Icon";
 import DropdownMenu from "./DropdownMenu.jsx";
 import ProductForm from "./ProductForm.jsx";
 
@@ -86,7 +86,7 @@ const styles = theme => ({
     textDecoration: "none",
     display: "flex",
     alignItems: "center",
-    padding: "10px",
+    padding: "20px",
     fontSize: "18px",
     "&:hover": {
       color: "#ddd"
@@ -115,6 +115,7 @@ class Navbar extends Component {
             <Toolbar>
               <Typography
                 className={classes.title}
+                style={{ fontFamily: "Parisienne, cursive", fontSize: 24 }}
                 variant="h6"
                 color="inherit"
                 noWrap
@@ -154,10 +155,12 @@ class Navbar extends Component {
                 </Link>
               </div>
               <div>
-                <AddShoppingCartIcon
+                <Icon
                   onClick={this.handleIconChange}
                   style={{ cursor: "pointer" }}
-                />
+                >
+                  shopping_cart
+                </Icon>
               </div>
             </Toolbar>
           </AppBar>
@@ -169,6 +172,7 @@ class Navbar extends Component {
             <Toolbar>
               <Typography
                 className={classes.title}
+                style={{ fontFamily: "Parisienne, cursive", fontSize: 24 }}
                 variant="h6"
                 color="inherit"
                 noWrap

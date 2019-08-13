@@ -35,11 +35,12 @@ const HeroTitle = styled.div`
     font-size: 2em;
     font-style: italic;
     font-weight: 300;
+    padding-bottom: 50px;
   }
 `;
 
 const ButtonLink = styled(Link)`
-  display: inline-block;
+  /* display: inline-block;
   position: relative;
   border: 2px solid #fff;
   font-weight: 600;
@@ -54,7 +55,60 @@ const ButtonLink = styled(Link)`
   margin-top: 10%;
   cursor: pointer;
   outline: none;
+  text-decoration: none; */
+  position: relative;
+  padding: 1.4rem 4.2rem;
+  padding-right: 3.1rem;
+  font-size: 1.4rem;
+  color: #fff;
+  letter-spacing: 0.7rem;
+  text-transform: uppercase;
   text-decoration: none;
+  transition: all 600ms cubic-bezier(0.77, 0, 0.175, 1);
+  cursor: pointer;
+  user-select: none;
+  &:before,
+  &:after {
+    content: "";
+    position: absolute;
+    transition: inherit;
+    z-index: -1;
+  }
+  &:hover {
+    color: #96b7c4;
+    transition-delay: 0.6s;
+  }
+  &:hover:before {
+    transition-delay: 0s;
+  }
+  &:hover:after {
+    background: rgba(0, 0, 0, 0.5);
+    transition-delay: 0.4s;
+  }
+  &:before {
+    top: 0;
+    left: 50%;
+    height: 100%;
+    width: 0;
+    border: 1px solid #fff;
+    border-left: 0;
+    border-right: 0;
+  }
+  &:after {
+    bottom: 0;
+    left: 0;
+    height: 0;
+    width: 100%;
+    background: rgba(0, 0, 0, 0.5);
+  }
+  &:hover:before {
+    left: 0;
+    width: 100%;
+  }
+  &:hover:after {
+    top: 0;
+    height: 100%;
+  }
 `;
 
 const CatalogueContainer = styled.div`

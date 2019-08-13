@@ -27,6 +27,7 @@ class Products extends Component {
             });
             return (
               <ItemCard
+                key={product.id}
                 title={product.title}
                 image={product.image}
                 price={product.price}

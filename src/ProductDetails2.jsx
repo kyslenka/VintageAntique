@@ -119,8 +119,9 @@ const ProductDescription = styled.div`
   > p {
     font-size: 18px;
     font-weight: 300;
-    color: #86939e;
-    line-height: 24px;
+    color: black;
+    line-height: 28px;
+    max-width: 400px;
   }
 `;
 const Price = styled.div`
@@ -133,16 +134,18 @@ const Price = styled.div`
 `;
 const Button = styled.div`
   display: inline-block;
-  background-color: lightgrey;
+  background-color: #e4990e;
   border-radius: 6px;
   font-size: 16px;
+  text-transform: uppercase;
   cursor: pointer;
-  color: #ffffff;
+  color: black;
   text-decoration: none;
-  padding: 12px 30px;
+  padding: 16px 20px;
   transition: all 0.5s;
+  font-family: Arial, Helvetica, sans-serif;
   &:hover {
-    background-color: lightblue;
+    background-color: #ecac35;
   }
 `;
 
