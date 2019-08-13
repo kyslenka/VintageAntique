@@ -26,7 +26,8 @@ const Wrapper = styled.div`
 `;
 
 const Routes = styled.div`
-  min-height: calc(100vh - 64px - 150px);
+  /* min-height: 100vh; */
+  min-height: calc(100vh - 60px - 130px);
 `;
 class App extends Component {
   async componentDidMount() {

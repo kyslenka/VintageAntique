@@ -12,6 +12,8 @@ import { fade } from "@material-ui/core/styles/colorManipulator";
 import { withStyles } from "@material-ui/core/styles";
 import SearchIcon from "@material-ui/icons/Search";
 import AddShoppingCartIcon from "@material-ui/icons/AddShoppingCart";
+import DropdownMenu from "./DropdownMenu.jsx";
+import ProductForm from "./ProductForm.jsx";
 
 const styles = theme => ({
   root: {
@@ -19,7 +21,7 @@ const styles = theme => ({
     position: "sticky",
     top: 0,
     zIndex: 10,
-    backgroundColor: "#333"
+    backgroundColor: "#47474a"
   },
   grow: {
     flexGrow: 1
@@ -35,6 +37,7 @@ const styles = theme => ({
   search: {
     position: "relative",
     borderRadius: theme.shape.borderRadius,
+    fontFamily: "Georgia, Palatino, serif",
     backgroundColor: fade(theme.palette.common.white, 0.15),
     "&:hover": {
       backgroundColor: fade(theme.palette.common.white, 0.25)
@@ -105,7 +108,10 @@ class Navbar extends Component {
     return (
       <>
         {this.props.login ? (
-          <AppBar position="sticky">
+          <AppBar
+            position="sticky"
+            style={{ backgroundColor: "#47474a", height: "10vh" }}
+          >
             <Toolbar>
               <Typography
                 className={classes.title}
@@ -119,11 +125,11 @@ class Navbar extends Component {
                 <Link className={classes.link} to="/">
                   Home
                 </Link>
-                <Link className={classes.link} to="/catalogue">
-                  Catalogue
-                </Link>
+                <h4>
+                  <DropdownMenu />
+                </h4>
                 <Link className={classes.link} to="/sellItem">
-                  Sell item
+                  Sell Product
                 </Link>
               </div>
               <div className={classes.grow} />
@@ -148,12 +154,18 @@ class Navbar extends Component {
                 </Link>
               </div>
               <div>
-                <AddShoppingCartIcon onClick={this.handleIconChange} />
+                <AddShoppingCartIcon
+                  onClick={this.handleIconChange}
+                  style={{ cursor: "pointer" }}
+                />
               </div>
             </Toolbar>
           </AppBar>
         ) : (
-          <AppBar position="sticky">
+          <AppBar
+            position="sticky"
+            style={{ backgroundColor: "#47474a", height: "10vh" }}
+          >
             <Toolbar>
               <Typography
                 className={classes.title}

@@ -3,7 +3,6 @@ import styled from "styled-components";
 import { Link } from "react-router-dom";
 
 const FooterWrapper = styled.div`
-  min-height: 20vh;
   background: #333;
   color: #fff;
   bottom: 0;
@@ -37,7 +36,7 @@ const TextLink = styled(Link)`
 const List = styled.ul`
   list-style-type: none;
   padding: 7px 25px;
-  max-width: 450px;
+  max-width: 550px;
   margin: 0 auto;
 `;
 
@@ -65,7 +64,7 @@ const Footer = () => {
           <div
             style={{
               fontSize: "20px",
-              fontFamily: "Times, Times New Roman, serif"
+              fontFamily: "Georgia, Palatino, serif"
             }}
           >
             Copyright &copy; 2019 VintageAntique
@@ -94,7 +93,7 @@ const Footer = () => {
                   fontFamily: "Times, Times New Roman, serif"
                 }}
               >
-                Address: 125 av. Pie-X, Montreal, QC, CA
+                Address: 528 Parc Avenue, New York, NY 10031, US
               </div>
             </li>
             <li>

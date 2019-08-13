@@ -14,17 +14,17 @@ const initialCatalogues = [
         id: 0
       },
       {
-        title: "Korean Drawer Apothecary Accent Chest",
+        title: "Korean Drawer Apothecary Chest",
         description:
-          "Traditional oriental 18 drawer apothecary chest. Richly grained dark walnut stained wood finish. Elegant Asian style brass butterfly hasp & hardware. Korean design Tori gate style cantilevered top.",
+          "Traditional oriental 18-drawer apothecary chest. Richly grained dark walnut stained wood finish. Elegant Asian style brass butterfly hasp & hardware. Korean design Tori gate style cantilevered top.",
         price: "$3250",
         image: "/images/drawer.jpg",
         id: 1
       },
       {
-        title: "19th Century Biedermeier Globe Table",
+        title: "Biedermeier Globe Table",
         description:
-          "Elm, cherry and yew finely inlaid with fillets and frieze also partly ebonised. Hinged globe on 3 scrolled legs, architectural style fitted interior with mirror-lined central compartment between canopy and stepped drawer, flanked by cylindrical drawers. ",
+          "This 19-th century table is made of elm and cherry and finely inlaid with fillets and frieze also partly ebonised. Hinged globe on 3 scrolled legs, architectural style fitted interior with mirror-lined central compartment between canopy and stepped drawer, flanked by cylindrical drawers. ",
         price: "$2350",
         image: "/images/globeTable.jpg",
         id: 2
@@ -46,15 +46,15 @@ const initialCatalogues = [
         id: 4
       },
       {
-        title: "19th Century Venetian Mirror",
+        title: "Venetian Mirror",
         description:
-          "Octagonal crested Antique Venetian Mirror with reverse etched decoration to crests and outer margins. Original glass with bevelled centre plate. Original pine board back.",
+          "Octagonal crested Venetian Mirror with reverse etched decoration to crests and outer margins. Original glass with bevelled centre plate. Original pine board back.",
         price: "$1500",
         image: "/images/mirror.jpg",
         id: 5
       },
       {
-        title: "1950s Gilt-Bronze Trolley",
+        title: "Gilt-Bronze Trolley",
         description:
           "A very fine circular polished brass bar cart with two levels, the borders of pierced brass supported on turned brass legs with concave stretchers, an ornate handle and raised on four brass wheels.",
         price: "$1250",
@@ -70,7 +70,7 @@ const initialCatalogues = [
         id: 7
       },
       {
-        title: "18th Century Satinwood Armchair",
+        title: "Satinwood Armchair",
         description:
           "An exceptional George III satinwood open armchair in the manner of George Hepplewhite. Vertical splat carved with the Prince of Wales’s feathers, the caned seat fitted with blue silk cushions.",
         price: "$2250",
@@ -94,7 +94,7 @@ const initialCatalogues = [
         id: 9
       },
       {
-        title: "Nude",
+        title: "Nude Woman",
         description:
           "Oil on canvas. Featuring a cubist portrait of nude. Attributed to Pablo Picasso (1881-1973, Spanish). 31.1 x 27.2 inches.",
         price: "$2750",

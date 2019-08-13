@@ -12,7 +12,6 @@ const styles = theme => ({
     flexWrap: "wrap",
     minWidth: 300,
     width: "75%",
-    // height: "calc(100vh - 400px)",
     alignItems: "center",
     margin: "0 auto",
     boxShadow: "0 -6px 0 #fff, 0 1px 6px rgba(0,0,0, .35)",
@@ -73,6 +72,7 @@ const styles = theme => ({
     position: "relative",
     fontSize: "2em",
     fontWeight: "100",
+    fontFamily: "Georgia, Palatino, serif",
     padding: `${theme.spacing.unit * 2}px ${theme.spacing.unit * 4}px ${theme
       .spacing.unit + 6}px`
   },

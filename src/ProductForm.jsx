@@ -213,7 +213,7 @@ class ProductForm extends Component {
               value={this.state.decsription}
               placeholder="Type product description"
               cols={80}
-              rows={8}
+              rows={6}
               style={{
                 fontFamily: "Times New Roman",
                 fontSize: 18,

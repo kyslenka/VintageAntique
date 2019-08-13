@@ -6,7 +6,7 @@ const WidjetWrapper = styled.div`
   min-width: 100%;
   position: relative;
   min-height: 140vh;
-  padding: 60px 10px;
+  padding: 30px 10px;
   background: #fafafa;
 `;
 const WidjetContainer = styled.div`
@@ -19,7 +19,7 @@ const Events = styled.div`
   transition: opacity 0.15s linear;
 `;
 const Item1 = styled.div`
-  margin-bottom: 40px;
+  margin-bottom: 10px;
   float: left;
   width: 50%;
   position: relative;
@@ -29,7 +29,7 @@ const TextLink = styled(Link)`
   text-decoration: none;
   background-color: transparent;
   &:hover {
-    color: #ddd;
+    color: #bbb2b2;
   }
 `;
 const ImageWrapper = styled.div`
@@ -142,7 +142,6 @@ class HomeTable extends Component {
                 </ThemeContent2>
               </Content2>
             </Item2>
-            {/* <Item3 />  */}
           </Events>
         </WidjetContainer>
       </WidjetWrapper>

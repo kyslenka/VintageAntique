@@ -56,6 +56,26 @@ class ItemCard extends Component {
     );
     console.log(this.props);
   };
+  handleOnClickAdd = async () => {
+    const data = {
+      catalogueId: this.props.catalogueId,
+      productId: this.props.id
+    };
+    const response = await fetch("/cart/product", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json"
+      },
+      body: JSON.stringify(data)
+    });
+    const body = await response.json();
+    console.log(body);
+    if (body.success) {
+      this.props.history.push(
+        `/cart/catalogue/${this.props.catalogueId}/product/${this.props.id}`
+      );
+    }
+  };
   render() {
     const { classes, image, title, price, id } = this.props;
     return (
@@ -67,16 +87,22 @@ class ItemCard extends Component {
               image={image}
               title={title}
             />
-            {/* <img src={image} /> */}
             <CardContent className={classes.cardContent}>
               <Typography gutterBottom variant="h6" component="h2">
                 {title}
               </Typography>
               <Typography>{price}</Typography>
             </CardContent>
-            <CardActions>
-              <Button onClick={this.handleOnClick} size="small" color="primary">
+            <CardActions style={{ justifyContent: "space-between" }}>
+              <Button onClick={this.handleOnClick} size="small" color="#bbb2b2">
                 View
+              </Button>
+              <Button
+                onClick={this.handleOnClickAdd}
+                size="small"
+                color="#bbb2b2"
+              >
+                Add to Cart
               </Button>
             </CardActions>
           </StyledCard>
