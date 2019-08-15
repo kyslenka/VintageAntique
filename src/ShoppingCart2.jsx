@@ -10,30 +10,30 @@ const Wrapper = styled.div`
   min-height: 100vh;
 `;
 const CheckoutContainer = styled.div`
-  display: grid;
-  grid-gap: 20px;
+  display: flex;
+  padding: 0 120px;
+  /* grid-gap: 20px;
   grid-template-columns: repeat(4, 300px);
   grid-template-rows: repeat(7, 100px);
   justify-content: center;
-  /* width: 1150px;
-  margin-right: auto;
+  /* width: 1150px; */
+  /* margin-right: auto;
   margin-left: auto;
   padding-left: 15px;
   padding-right: 15px;
   min-height: 100vh;
   background: #eee; */
 `;
-const Grid = styled.div`
-  display: grid;
-  grid-template-columns: 2fr auto;
-`;
+// const Grid = styled.div`
+//   display: grid;
+//   grid-template-columns: 2fr auto;
+// `;
 const TitleContainer = styled.div`
   /* width: 100%;
   position: relative;
   min-height: 1px; */
   padding-left: 15px;
   padding-right: 15px;
-  grid-column: 1 / 5;
 `;
 const Title = styled.div`
   text-align: left;
@@ -46,8 +46,7 @@ const Title = styled.div`
   }
 `;
 const CartItemList = styled.div`
-  grid-column: 1 / 4;
-  grid-row: 2 / 4;
+  flex: 1;
   min-height: 100vh;
 `;
 const Container = styled.div`
@@ -156,7 +155,9 @@ const Order = styled.div`
   /* width: 30%; */
   min-height: 39vh;
   padding: 10px;
-  grid-column: 4 / 5;
+  width: 300px;
+  align-self: flex-start;
+  margin-left: 30px;
 `;
 const OrderDetails = styled.div`
   > h4 {
@@ -227,6 +228,41 @@ const CheckoutButton = styled.button`
   transition-duration: 0.15s;
   transition-timing-function: ease-in-out;
 `;
+const ProductEmptyCart = styled.div`
+  background: #fff;
+  padding: 150px 20px;
+  margin: 0 auto;
+  height: 500px;
+  width: 800px;
+  text-align: center;
+  box-shadow: 0 -6px 0 #fff, 0 1px 6px rgba(0, 0, 0, 0.35);
+  > h2 {
+    text-transform: uppercase;
+    font-size: 34px;
+    padding: 10px;
+  }
+  > p {
+    color: #666;
+    font-size: 24px;
+    text-transform: uppercase;
+  }
+`;
+const ButtonLink = styled(Link)`
+  display: inline-block;
+  background-color: #cfbce88c;
+  margin-top: 20px;
+  text-transform: uppercase;
+  cursor: pointer;
+  border: 1px solid black;
+  border-radius: 3px;
+  padding: 12px 12px;
+  font-size: 16px;
+  text-decoration: none;
+  color: black;
+  &:hover {
+    background-color: #dfd1f18c;
+  }
+`;
 class ShoppingCart2 extends Component {
   calculateTotalPrice = () => {
     let totalPrice = 0;
@@ -238,9 +274,9 @@ class ShoppingCart2 extends Component {
   };
 
   componentDidMount = () => {
-    this.fetchProduct();
+    this.fetchItemsInCart();
   };
-  fetchProduct = async () => {
+  fetchItemsInCart = async () => {
     const response = await fetch(
       `/cart/product?productId=${this.props.id}&catalogueId=${
         this.props.catalogueId
@@ -249,7 +285,7 @@ class ShoppingCart2 extends Component {
     const body = await response.json();
     if (body.success) {
       this.props.dispatch({
-        type: "ADD_TO_CART",
+        type: "IN_THE_CART",
         product: body.product,
         cart: body.cart
       });
@@ -261,7 +297,7 @@ class ShoppingCart2 extends Component {
   handleOnClickRemove = async () => {
     const data = {
       catalogueId: this.props.catalogueId,
-      productId: this.props.catalogueId
+      productId: this.props.id
     };
     const response = await fetch("/remove/cart/product", {
       method: "POST",
@@ -281,75 +317,90 @@ class ShoppingCart2 extends Component {
   };
   render() {
     const { cart } = this.props;
+    console.log(this.props);
     return (
       <Wrapper>
-        <CheckoutContainer>
-          <TitleContainer>
-            <Title>
-              <h2>Shopping Bag</h2>
-            </Title>
-          </TitleContainer>
-          <CartItemList>
-            {cart.map(product => (
-              <Container key={product.id}>
-                <ProductBox>
-                  <Image>
-                    <img src={product.image} style={{ width: "100%" }} />
-                  </Image>
-                  <Details>
-                    <h4>{product.title}</h4>
-                    <Description>
-                      <ItemId>
-                        <p>Item Number</p>
-                        <span>{product.id}</span>
-                      </ItemId>
-                      <Price>
-                        <p>Price</p>
-                        <span>{product.price}</span>
-                      </Price>
-                      <Button
-                        type="button"
-                        onClick={() => this.handleOnClickRemove(product.id)}
-                      >
-                        Remove
-                      </Button>
-                    </Description>
-                  </Details>
-                </ProductBox>
-              </Container>
-            ))}
-          </CartItemList>
-          <Order>
-            <OrderDetails>
-              <h4>Order Summary</h4>
-              <Summary>
-                {cart.map(product => (
-                  <Subtotal>
-                    <span>Item Price</span>
-                    <span style={{ textAlign: "right" }}>{product.price}</span>
-                  </Subtotal>
-                ))}
-                <OrderContainer>
-                  <span>Shipping</span>
-                  <span style={{ textAlign: "right" }}>Free</span>
-                </OrderContainer>
-                <TotalPrice>
-                  <span>Total Price</span>
-                  <span style={{ textAlign: "right" }}>
-                    ${this.calculateTotalPrice()}
-                  </span>
-                </TotalPrice>
-              </Summary>
-              <CheckoutButton
-                type="button"
-                onClick={this.handleOnClickCheckout}
-              >
-                Checkout
-              </CheckoutButton>
-              <div />
-            </OrderDetails>
-          </Order>
-        </CheckoutContainer>
+        <TitleContainer>
+          <Title>
+            <h2>Shopping Bag</h2>
+          </Title>
+        </TitleContainer>
+        {cart.length > 0 && (
+          <CheckoutContainer>
+            <CartItemList>
+              {cart.map(product => (
+                <Container key={product.id}>
+                  <ProductBox>
+                    <Image>
+                      <img
+                        src={product.image}
+                        style={{ width: 150, height: 150, objectFit: "cover" }}
+                      />
+                    </Image>
+                    <Details>
+                      <h4>{product.title}</h4>
+                      <Description>
+                        <ItemId>
+                          <p>Item Number</p>
+                          <span>{product.id}</span>
+                        </ItemId>
+                        <Price>
+                          <p>Price</p>
+                          <span>{product.price}</span>
+                        </Price>
+                        <Button
+                          type="button"
+                          onClick={() => this.handleOnClickRemove(product.id)}
+                        >
+                          Remove
+                        </Button>
+                      </Description>
+                    </Details>
+                  </ProductBox>
+                </Container>
+              ))}
+            </CartItemList>
+            <Order>
+              <OrderDetails>
+                <h4>Order Summary</h4>
+                <Summary>
+                  {cart.map(product => (
+                    <Subtotal>
+                      <span>Item Price</span>
+                      <span style={{ textAlign: "right" }}>
+                        {product.price}
+                      </span>
+                    </Subtotal>
+                  ))}
+                  <OrderContainer>
+                    <span>Shipping</span>
+                    <span style={{ textAlign: "right" }}>Free</span>
+                  </OrderContainer>
+                  <TotalPrice>
+                    <span>Total Price</span>
+                    <span style={{ textAlign: "right" }}>
+                      ${this.calculateTotalPrice()}
+                    </span>
+                  </TotalPrice>
+                </Summary>
+                <CheckoutButton
+                  type="button"
+                  onClick={this.handleOnClickCheckout}
+                >
+                  Checkout
+                </CheckoutButton>
+                <div />
+              </OrderDetails>
+            </Order>
+          </CheckoutContainer>
+        )}
+        {cart.length === 0 && (
+          <ProductEmptyCart>
+            <h2>Your shopping bag is empty</h2>
+            <p>Fill it in with your favorite finds</p>
+            <ButtonLink to={"/allProducts"}>Start Shopping</ButtonLink>
+          </ProductEmptyCart>
+        )}
       </Wrapper>
     );
   }

@@ -3692,3 +3692,86 @@ class ProductForm extends Component {
 }
 
 export default withRouter(ProductForm);
+
+
+
+
+render() {
+    const { cart } = this.props;
+    console.log(this.props);
+    return (
+      <Wrapper>
+        <TitleContainer>
+          <Title>
+            <h2>Shopping Bag</h2>
+          </Title>
+        </TitleContainer>
+        <CheckoutContainer>
+          <CartItemList>
+            {cart.map(product => (
+              <Container key={product.id}>
+                <ProductBox>
+                  <Image>
+                    <img
+                      src={product.image}
+                      style={{ width: 150, height: 150, objectFit: "cover" }}
+                    />
+                  </Image>
+                  <Details>
+                    <h4>{product.title}</h4>
+                    <Description>
+                      <ItemId>
+                        <p>Item Number</p>
+                        <span>{product.id}</span>
+                      </ItemId>
+                      <Price>
+                        <p>Price</p>
+                        <span>{product.price}</span>
+                      </Price>
+                      <Button
+                        type="button"
+                        onClick={() => this.handleOnClickRemove(product.id)}
+                      >
+                        Remove
+                      </Button>
+                    </Description>
+                  </Details>
+                </ProductBox>
+              </Container>
+            ))}
+          </CartItemList>
+          <Order>
+            <OrderDetails>
+              <h4>Order Summary</h4>
+              <Summary>
+                {cart.map(product => (
+                  <Subtotal>
+                    <span>Item Price</span>
+                    <span style={{ textAlign: "right" }}>{product.price}</span>
+                  </Subtotal>
+                ))}
+                <OrderContainer>
+                  <span>Shipping</span>
+                  <span style={{ textAlign: "right" }}>Free</span>
+                </OrderContainer>
+                <TotalPrice>
+                  <span>Total Price</span>
+                  <span style={{ textAlign: "right" }}>
+                    ${this.calculateTotalPrice()}
+                  </span>
+                </TotalPrice>
+              </Summary>
+              <CheckoutButton
+                type="button"
+                onClick={this.handleOnClickCheckout}
+              >
+                Checkout
+              </CheckoutButton>
+              <div />
+            </OrderDetails>
+          </Order>
+        </CheckoutContainer>
+      </Wrapper>
+    );
+  }
+}

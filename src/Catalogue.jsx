@@ -8,6 +8,7 @@ import Grid from "@material-ui/core/Grid";
 import Typography from "@material-ui/core/Typography";
 import { withStyles } from "@material-ui/core/styles";
 import ItemCard from "./ItemCard.jsx";
+import CircularProgress from "@material-ui/core/CircularProgress";
 
 const styles = theme => ({
   heroUnit: {
@@ -52,6 +53,13 @@ const Wrapper = styled.div`
   padding: 10px;
 `;
 
+const CircularProgressWrapper = styled.div`
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+`;
 class Catalogue extends Component {
   constructor() {
     super();
@@ -70,7 +78,11 @@ class Catalogue extends Component {
   render() {
     const { classes, id } = this.props;
     if (this.state.catalogues.length === 0) {
-      return "Loading...";
+      return (
+        <CircularProgressWrapper>
+          <CircularProgress />
+        </CircularProgressWrapper>
+      );
     }
     const catalogue = this.state.catalogues.find(
       catalogue => catalogue.id === id

@@ -140,7 +140,6 @@ class ProductForm extends Component {
   };
   handleImageChange = event => {
     this.setState({ image: event.target.files[0] });
-    alert(`Selected file - ${this.fileInput.current.files[0].name}`);
   };
   handlePriceChange = event => {
     this.setState({ price: event.target.value });
@@ -187,7 +186,7 @@ class ProductForm extends Component {
             </label>
             <FileLabel>
               {" "}
-              Upload file:
+              Upload file: {this.state.image && this.state.image.name}
               <input
                 onChange={this.handleImageChange}
                 type="file"

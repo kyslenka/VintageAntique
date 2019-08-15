@@ -11,6 +11,7 @@ import Typography from "@material-ui/core/Typography";
 import { withStyles } from "@material-ui/core/styles";
 import { withRouter } from "react-router-dom";
 import styled from "styled-components";
+import { connect } from "react-redux";
 
 const styles = theme => ({
   layout: {
@@ -43,13 +44,47 @@ const StyledCard = styled(Card)`
   height: 100%;
   display: flex;
   flex-direction: column;
-
+  /* object-fit: cover; */
+  &:hover > div:first-child {
+    backface-visibility: hidden;
+    transform: translateZ(0) scale(1.1);
+  }
   & > div:first-child {
-    background-size: 150px;
+    /* width: 350px;
+    height: 200px;
+    object-fit: cover; */
+    background-repeat: no-repeat;
+    background-size: 200px;
+    width: 100%;
+    height: 100%;
+    transition: 0.4s ease-in-out;
+    display: block;
+    overflow: hidden;
+    object-fit: cover;
+    background-color: #fff;
   }
 `;
 
 class ItemCard extends Component {
+  componentDidMount = () => {
+    this.fetchItemsInCart();
+  };
+  fetchItemsInCart = async () => {
+    console.log(this.props);
+    const response = await fetch(
+      `/cart/product?productId=${this.props.id}&catalogueId=${
+        this.props.catalogueId
+      }`
+    );
+    const body = await response.json();
+    if (body.success) {
+      this.props.dispatch({
+        type: "IN_THE_CART",
+        product: body.product,
+        cart: body.cart
+      });
+    }
+  };
   handleOnClick = () => {
     this.props.history.push(
       `/catalogue/${this.props.catalogueId}/product/${this.props.id}`
@@ -82,11 +117,7 @@ class ItemCard extends Component {
       <Grid item key={title} sm={6} md={4} lg={3}>
         <div style={{ padding: 10, height: "100%" }}>
           <StyledCard style={{ padding: 10 }}>
-            <CardMedia
-              className={classes.cardMedia}
-              image={image}
-              title={title}
-            />
+            <CardMedia className={classes.cardMedia} image={image} />
             <CardContent className={classes.cardContent}>
               <Typography gutterBottom variant="h6" component="h2">
                 {title}
@@ -99,8 +130,12 @@ class ItemCard extends Component {
               <Button onClick={this.handleOnClick} size="medium">
                 View
               </Button>
-              <Button onClick={this.handleOnClickAdd} size="medium">
-                Add to Cart
+              <Button
+                disabled={this.props.isInCart}
+                onClick={this.handleOnClickAdd}
+                size="medium"
+              >
+                {this.props.isInCart ? "In Cart" : "Add to Cart"}
               </Button>
             </CardActions>
           </StyledCard>
@@ -114,4 +149,11 @@ ItemCard.propTypes = {
   classes: PropTypes.object.isRequired
 };
 
-export default withRouter(withStyles(styles)(ItemCard));
+const mapStateToProps = (state, ownProps) => {
+  const isInCart = state.cart.some(item => item.id === ownProps.id);
+  return { isInCart };
+};
+
+export default withRouter(
+  withStyles(styles)(connect(mapStateToProps)(ItemCard))
+);

@@ -19,12 +19,8 @@ function reducer(state = initialState, action) {
       return { ...state, loggedIn: true, username: action.username };
     case "LOGOUT":
       return { ...state, loggedIn: false, username: "" };
-    case "ADD_TO_CART":
-      return {
-        ...state,
-        product: action.product,
-        cart: action.cart
-      };
+    case "IN_THE_CART":
+      return { ...state, product: action.product, cart: action.cart };
     case "REMOVE_FROM_CART":
       return { ...state, cart: action.cart, product: action.product };
     case "COMPLETE_CHECKOUT":

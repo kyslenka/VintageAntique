@@ -30,10 +30,10 @@ const initialCatalogues = [
         id: 2
       },
       {
-        title: "The Harrington Commode",
+        title: "Louis XV Marquetry Commode",
         description:
-          "The Harrington Commode is thought to have been crafted around 1770 by London cabinet maker Thomas Chippendale. The most splendid piece of English furniture is made of gilt-lacquered fustic, rosewood and tulipwood mounted with brass.",
-        price: "$5000",
+          "The transitional gilt bronze-mounted tulipwood and fruitwood marquetry commode from 18th centure with a brèche d'Alep marble top.",
+        price: "$3000",
         image: "/images/commode.jpg",
         id: 3
       },
@@ -62,7 +62,7 @@ const initialCatalogues = [
         id: 6
       },
       {
-        title: "Louis XVI Style Gossip Bench",
+        title: "Louis XVI Gossip Bench",
         description:
           "French Louis XVI style gilt gossip seat. Two chairs side to side, perfect for a gossip. Hand carved gilt frame and upholstered in pale fabric.",
         price: "$2900",
@@ -74,7 +74,7 @@ const initialCatalogues = [
         description:
           "An exceptional George III satinwood open armchair in the manner of George Hepplewhite. Vertical splat carved with the Prince of Wales’s feathers, the caned seat fitted with blue silk cushions.",
         price: "$2250",
-        image: "/images/armchair.jpg",
+        image: "/images/chair.png",
         id: 8
       }
     ]
@@ -94,11 +94,11 @@ const initialCatalogues = [
         id: 9
       },
       {
-        title: "Nude Woman",
+        title: "La Chiesa Gesuati",
         description:
-          "Oil on canvas. Featuring a cubist portrait of nude. Attributed to Pablo Picasso (1881-1973, Spanish). 31.1 x 27.2 inches.",
+          "Oil on canvas. This highly detailed composition by Federico del Campo details a panoramic view of a Venetian canal. Dated 1899. 31.1 x 27.2 inches.",
         price: "$2750",
-        image: "/images/nude.jpg",
+        image: "/images/chiesa.png",
         id: 10
       },
       {
@@ -118,9 +118,9 @@ const initialCatalogues = [
         id: 12
       },
       {
-        title: "Young Beauty",
+        title: "Gather Ye Rosebuds While Ye May",
         description:
-          "Pre-Raphaelite style painting of a young beautiful lady sitting in a garden. The painting of Guilio Pastine still retains its original embroidered frame. Signed and dated 1913, frame size: 51½ x 33 inches.",
+          "Oil painting on canvas created in 1908 by British Pre-Raphaelite artist, John William Waterhouse. Frame size: 51½ x 33 inches.",
         price: "$1050",
         image: "/images/beauty.jpg",
         id: 13
@@ -134,11 +134,11 @@ const initialCatalogues = [
         id: 14
       },
       {
-        title: "Young Couple Miniature Portrait",
+        title: "Sunset on Lake George",
         description:
-          "This watercolour on ivory of early 19th century is beautifully painted with excellent colours and of lovely quality. The frame (4 x 3 inches) is solid heavy ivory with a gold surround or bezel.",
+          "This exceptional Hudson River School landscape is the work of American artist Louis Rémy Mignot. Circa 1860. Frame: 24 x 34 inches.",
         price: "$2000",
-        image: "/images/portrait.jpg",
+        image: "/images/sunset.png",
         id: 15
       },
       {
@@ -150,11 +150,11 @@ const initialCatalogues = [
         id: 16
       },
       {
-        title: "Japanese Silk Embroidery Picture",
+        title: "The Sea at Grandcamp",
         description:
-          "A superb Japanese silk embroidery picture of late 19th century using long and short stitch, with a pair of tigers stealthily moving through the forest. Frame size: 41¾ x 31 inches.",
+          "This tranquil seascape is the work of the great Georges Seurat, one of the most important and innovative artists of all time. Frame size: 41¾ x 31 inches.",
         price: "$1250",
-        image: "/images/tigers.jpg",
+        image: "/images/mer.png",
         id: 17
       }
     ]
@@ -166,11 +166,11 @@ const initialCatalogues = [
       "We carry a great selection of vintage, antique, art deco, estate and pre-owned jewellery. This ever-changing collection of jewellery pieces featuring estate diamonds, Victorian necklaces, unique earrings, rings, brooches and cameos.",
     products: [
       {
-        title: "Art Deco Diamond and Blue Sapphire Ring",
+        title: "Art Deco Diamond & Blue Sapphire Ring",
         description:
           "This Art Deco 14k white gold diamond and blue sapphire ring features one 0.06ct diamond, I1 clarity, F color and is accented by 4 square cut blue sapphires that showcase the filigree design. Weight 3.1 grams.",
         price: "$5000",
-        image: "/images/ring.jpg",
+        image: "/images/ring.png",
         id: 18
       },
       {
@@ -222,19 +222,19 @@ const initialCatalogues = [
         id: 24
       },
       {
-        title: "Art Deco Box Signed Janesich Paris",
+        title: "Enamel and Diamond Powder Box by Cartier",
         description:
-          "Box set with rose-cut diamonds. Pushbutton crimped with rods sapphires. Circa 1935. (Gross) weight: 68 grams, 2 x 1 inches.",
+          "The inky black of the enamel paired with diamond set shapes. In the interior of the box, the mirror has been replaced with a yellow gold insert engraved with “Mrs. Paul E. Gardner.” Circa 1930. (Gross) weight: 68 grams, 2 x 1 inches.",
         price: "$1000",
         image: "/images/box.jpg",
         id: 25
       },
       {
-        title: "Gothic Revival Earings, Cornelian Cameos",
+        title: "Victorian Gold & Micro Mosaic Scarab Earrings",
         description:
-          "Pair of Gothic Revival earrings including frames embellished with enamel. 19th century. Total weight (gross): 10.85 grams, 1 x 1 inches.",
-        price: "$1250",
-        image: "/images/earings.jpg",
+          "A pair of Victorian Egyptian Revival scarab beetle earrings in 15ct gold. The Scarabs are made in Micro Mosaic, which is an Italian inlaid glass technique. Circa 1870",
+        price: "$1950",
+        image: "/images/earrings.jpg",
         id: 26
       }
     ]
