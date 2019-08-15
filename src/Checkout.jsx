@@ -6,11 +6,10 @@ import Paper from "@material-ui/core/Paper";
 import Stepper from "@material-ui/core/Stepper";
 import Step from "@material-ui/core/Step";
 import StepLabel from "@material-ui/core/StepLabel";
-import Button from "@material-ui/core/Button";
 import Typography from "@material-ui/core/Typography";
-import AddressForm2 from "./AddressForm2.jsx";
-import PaymentForm2 from "./PaymentForm2.jsx";
-import Review2 from "./Review2.jsx";
+import AddressForm from "./AddressForm.jsx";
+import PaymentForm from "./PaymentForm.jsx";
+import Review from "./Review.jsx";
 import Success from "./Success.jsx";
 import { connect } from "react-redux";
 

@@ -1,6 +1,5 @@
 import React, { Component } from "react";
 import PropTypes from "prop-types";
-import classNames from "classnames";
 import Button from "@material-ui/core/Button";
 import Card from "@material-ui/core/Card";
 import CardActions from "@material-ui/core/CardActions";
@@ -44,15 +43,11 @@ const StyledCard = styled(Card)`
   height: 100%;
   display: flex;
   flex-direction: column;
-  /* object-fit: cover; */
   &:hover > div:first-child {
     backface-visibility: hidden;
     transform: translateZ(0) scale(1.1);
   }
   & > div:first-child {
-    /* width: 350px;
-    height: 200px;
-    object-fit: cover; */
     background-repeat: no-repeat;
     background-size: 200px;
     width: 100%;

@@ -40,22 +40,6 @@ const HeroTitle = styled.div`
 `;
 
 const ButtonLink = styled(Link)`
-  /* display: inline-block;
-  position: relative;
-  border: 2px solid #fff;
-  font-weight: 600;
-  background: rgba(0, 0, 0, 0.5);
-  color: #fff;
-  text-transform: uppercase;
-  letter-spacing: 1.5px;
-  padding: 0 10px;
-  height: 50px;
-  width: 25%;
-  line-height: 50px;
-  margin-top: 10%;
-  cursor: pointer;
-  outline: none;
-  text-decoration: none; */
   position: relative;
   padding: 1.4rem 4.2rem;
   padding-right: 3.1rem;
@@ -116,9 +100,6 @@ const CatalogueContainer = styled.div`
   min-width: 100%;
   position: relative;
   min-height: 80vh;
-  /* display: flex;
-  align-items: center; */
-  /* justify-content: center; */
   padding: 80px 0 0;
 `;
 const CatalogueTitle = styled.div`
@@ -136,7 +117,6 @@ const CatalogueTitle = styled.div`
     letter-spacing: 2px;
     text-transform: uppercase;
     color: #4a4a4a;
-    font-family: "brandon-grotesque", BrandonGrotesque, sans-serif;
   }
 `;
 

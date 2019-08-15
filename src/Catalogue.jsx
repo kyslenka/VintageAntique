@@ -2,10 +2,7 @@ import React, { Component } from "react";
 import PropTypes from "prop-types";
 import styled from "styled-components";
 import classNames from "classnames";
-import Button from "@material-ui/core/Button";
 import CssBaseline from "@material-ui/core/CssBaseline";
-import Grid from "@material-ui/core/Grid";
-import Typography from "@material-ui/core/Typography";
 import { withStyles } from "@material-ui/core/styles";
 import ItemCard from "./ItemCard.jsx";
 import CircularProgress from "@material-ui/core/CircularProgress";
@@ -21,25 +18,15 @@ const styles = theme => ({
   },
   layout: {
     width: "auto"
-    // padding: "100px 0",
-    // marginLeft: theme.spacing.unit * 3,
-    // marginRight: theme.spacing.unit * 3
-    // [theme.breakpoints.up(1100 + theme.spacing.unit * 3 * 2)]: {
-    //   width: 1100,
-    //   marginLeft: "auto",
-    //   marginRight: "auto"
-    // }
   },
-  cardGrid: {
-    // padding: "40px 0"
-  },
+  cardGrid: {},
   card: {
     height: "100%",
     display: "flex",
     flexDirection: "column"
   },
   cardMedia: {
-    paddingTop: "56.25%" // 16:9
+    paddingTop: "56.25%"
   },
   cardContent: {
     flexGrow: 1
@@ -91,30 +78,8 @@ class Catalogue extends Component {
       <React.Fragment>
         <CssBaseline />
         <main>
-          {/* Hero unit */}
-          <div className={classes.heroUnit}>
-            {/* <div className={classes.heroContent}>
-              <Typography
-                component="h1"
-                variant="h2"
-                align="center"
-                color="textPrimary"
-                gutterBottom
-              >
-                {catalogue.title}
-              </Typography>
-              <Typography
-                variant="h6"
-                align="center"
-                color="textSecondary"
-                paragraph
-              >
-                {catalogue.description}
-              </Typography>
-            </div> */}
-          </div>
+          <div className={classes.heroUnit} />
           <div className={classNames(classes.layout, classes.cardGrid)}>
-            {/* End hero unit */}
             <Wrapper>
               {catalogue.products.map(product => (
                 <ItemCard

@@ -1,45 +1,87 @@
 import React, { Component } from "react";
 import { withRouter } from "react-router-dom";
-import PropTypes from "prop-types";
-import classNames from "classnames";
-import Button from "@material-ui/core/Button";
-import Card from "@material-ui/core/Card";
-import CardActions from "@material-ui/core/CardActions";
-import CardContent from "@material-ui/core/CardContent";
-import CardMedia from "@material-ui/core/CardMedia";
-import Grid from "@material-ui/core/Grid";
-import Typography from "@material-ui/core/Typography";
-import { withStyles } from "@material-ui/core/styles";
+import styled from "styled-components";
+import CircularProgress from "@material-ui/core/CircularProgress";
 
-const styles = theme => ({
-  layout: {
-    width: "auto",
-    minHeight: "calc(100vh - 5px)",
-    marginLeft: theme.spacing.unit * 3,
-    marginRight: theme.spacing.unit * 3,
-    [theme.breakpoints.up(1100 + theme.spacing.unit * 3 * 2)]: {
-      width: 1100,
-      marginLeft: "auto",
-      marginRight: "auto"
-    }
-  },
-  cardGrid: {
-    padding: `${theme.spacing.unit * 8}px 0`
-  },
-  card: {
-    height: "100%",
-    width: "100%",
-    display: "flex",
-    flexDirection: "column"
-  },
-  cardMedia: {
-    paddingTop: "91.25%"
-  },
-  cardContent: {
-    flexGrow: 1
+const Wrapper = styled.div`
+  background: #fff;
+  margin: 50px;
+`;
+const Container = styled.div`
+  display: grid;
+  grid-gap: 40px;
+  grid-template-columns: 2fr auto 1fr;
+  max-width: 900px;
+  margin: auto;
+`;
+
+const LeftColumn = styled.div`
+  position: relative;
+  width: 500px;
+  height: 500px;
+  overflow: hidden;
+  grid-column: span 2;
+  position: relative;
+  > img {
+    position: absolute;
+    width: 100%;
+    height: auto;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
   }
-});
+`;
+const RightColumn = styled.div`
+  grid-column: span 1;
+`;
+const ProductDescription = styled.div`
+  margin-bottom: 20px;
 
+  > h1 {
+    font-size: 32px;
+    margin-bottom: 25px;
+    font-weight: normal;
+    color: black;
+  }
+  > p {
+    font-size: 18px;
+    font-weight: 300;
+    color: black;
+    line-height: 28px;
+    max-width: 400px;
+  }
+`;
+const Price = styled.div`
+  > span {
+    font-size: 22px;
+    font-weight: 300;
+    color: black;
+    margin-right: 20px;
+  }
+`;
+const Button = styled.div`
+  display: inline-block;
+  background-color: #cfbce88c;
+  border-radius: 6px;
+  font-size: 16px;
+  text-transform: uppercase;
+  cursor: pointer;
+  color: black;
+  text-decoration: none;
+  padding: 16px 20px;
+  transition: all 0.5s;
+  font-family: Arial, Helvetica, sans-serif;
+  &:hover {
+    background-color: #dfd1f18c;
+  }
+`;
+const CircularProgressWrapper = styled.div`
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+`;
 class ProductDetails extends Component {
   constructor() {
     super();
@@ -81,43 +123,34 @@ class ProductDetails extends Component {
   };
   render() {
     if (!this.state.product) {
-      return "Loading...";
+      return (
+        <CircularProgressWrapper>
+          <CircularProgress />
+        </CircularProgressWrapper>
+      );
     }
-    const { classes } = this.props;
     const { image, title, description, price } = this.state.product;
     console.log(this.state);
     return (
-      <Grid item key={title} sm={6} md={4} lg={3}>
-        <Card className={classes.card}>
-          <CardMedia
-            className={classes.cardMedia}
-            image={image}
-            title={title}
-          />
-          <CardContent className={classes.cardContent}>
-            <Typography gutterBottom variant="h6" component="h2">
-              {title}
-            </Typography>
-            <Typography>{description}</Typography>
-            <Typography>{price}</Typography>
-          </CardContent>
-          <CardActions>
-            <Button
-              onClick={this.handleOnClickAdd}
-              size="small"
-              color="primary"
-            >
-              Add to cart
-            </Button>
-          </CardActions>
-        </Card>
-      </Grid>
+      <Wrapper>
+        <Container>
+          <LeftColumn>
+            <img src={image} />
+          </LeftColumn>
+          <RightColumn>
+            <ProductDescription>
+              <h1>{title}</h1>
+              <Price>
+                <span>{price}</span>
+              </Price>
+              <p>{description}</p>
+            </ProductDescription>
+            <Button onClick={this.handleOnClickAdd}>Add to cart</Button>
+          </RightColumn>
+        </Container>
+      </Wrapper>
     );
   }
 }
 
-ProductDetails.propTypes = {
-  classes: PropTypes.object.isRequired
-};
-
-export default withRouter(withStyles(styles)(ProductDetails));
+export default withRouter(ProductDetails);

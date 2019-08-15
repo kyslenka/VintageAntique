@@ -2,47 +2,27 @@ import React, { Component } from "react";
 import Grid from "@material-ui/core/Grid";
 import Typography from "@material-ui/core/Typography";
 import TextField from "@material-ui/core/TextField";
+import Button from "@material-ui/core/Button";
+import withStyles from "@material-ui/core/styles/withStyles";
+
+const styles = theme => ({
+  buttons: {
+    display: "flex",
+    justifyContent: "flex-end"
+  },
+  button: {
+    marginTop: theme.spacing.unit * 3,
+    marginLeft: theme.spacing.unit
+  }
+});
 
 class AddressForm extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      firstName: "",
-      lastName: "",
-      address1: "",
-      address2: "",
-      city: "",
-      state: "",
-      zip: "",
-      country: ""
-    };
-  }
-  handleFirstNameChange = event => {
-    this.setState({ firstName: event.target.value });
+  continue = event => {
+    event.preventDefault();
+    this.props.nextStep();
   };
-  handleLastNameChange = event => {
-    this.setState({ lastName: event.target.value });
-  };
-  handleAddress1Change = event => {
-    this.setState({ address1: event.target.value });
-  };
-  handleAddress2Change = event => {
-    this.setState({ address2: event.target.value });
-  };
-  handleCityChange = event => {
-    this.setState({ city: event.target.value });
-  };
-  handleStateChange = event => {
-    this.setState({ state: event.target.value });
-  };
-  handleZipChange = event => {
-    this.setState({ zip: event.target.value });
-  };
-  handleCountryChange = event => {
-    this.setState({ country: event.target.value });
-  };
-
   render() {
+    const { values, handleChange, classes } = this.props;
     return (
       <React.Fragment>
         <Typography variant="h6" gutterBottom>
@@ -52,8 +32,8 @@ class AddressForm extends Component {
           <Grid item xs={12} sm={6}>
             <TextField
               required
-              onChange={this.handleFirstNameChange}
-              value={this.state.firstName}
+              onChange={handleChange("firstName")}
+              defaultValue={values.firstName}
               id="firstName"
               name="firstName"
               label="First name"
@@ -64,8 +44,8 @@ class AddressForm extends Component {
           <Grid item xs={12} sm={6}>
             <TextField
               required
-              onChange={this.handleLastNameChange}
-              value={this.state.lastName}
+              onChange={handleChange("lastName")}
+              defaultValue={values.lastName}
               id="lastName"
               name="lastName"
               label="Last name"
@@ -76,8 +56,8 @@ class AddressForm extends Component {
           <Grid item xs={12}>
             <TextField
               required
-              onChange={this.handleAddress1Change}
-              value={this.state.address1}
+              onChange={handleChange("address1")}
+              defaultValue={values.address1}
               id="address1"
               name="address1"
               label="Address line 1"
@@ -87,8 +67,8 @@ class AddressForm extends Component {
           </Grid>
           <Grid item xs={12}>
             <TextField
-              onChange={this.handleAddress2Change}
-              value={this.state.address2}
+              onChange={handleChange("address2")}
+              defaultValue={values.address2}
               id="address2"
               name="address2"
               label="Address line 2"
@@ -99,8 +79,8 @@ class AddressForm extends Component {
           <Grid item xs={12} sm={6}>
             <TextField
               required
-              onChange={this.handleCityChange}
-              value={this.state.city}
+              onChange={handleChange("city")}
+              defaultValue={values.city}
               id="city"
               name="city"
               label="City"
@@ -110,8 +90,8 @@ class AddressForm extends Component {
           </Grid>
           <Grid item xs={12} sm={6}>
             <TextField
-              onChange={this.handleStateChange}
-              value={this.state.state}
+              onChange={handleChange("state")}
+              defaultValue={values.state}
               id="state"
               name="state"
               label="State/Province/Region"
@@ -121,8 +101,8 @@ class AddressForm extends Component {
           <Grid item xs={12} sm={6}>
             <TextField
               required
-              onChange={this.handleZipChange}
-              value={this.state.zip}
+              onChange={handleChange("zip")}
+              defaultValue={values.zip}
               id="zip"
               name="zip"
               label="Zip / Postal code"
@@ -133,8 +113,8 @@ class AddressForm extends Component {
           <Grid item xs={12} sm={6}>
             <TextField
               required
-              onChange={this.handleCountryChange}
-              value={this.state.country}
+              onChange={handleChange("country")}
+              defaultValue={values.country}
               id="country"
               name="country"
               label="Country"
@@ -143,9 +123,20 @@ class AddressForm extends Component {
             />
           </Grid>
         </Grid>
+        <div className={classes.buttons}>
+          <Button
+            type="submit"
+            variant="contained"
+            color="primary"
+            onClick={this.continue}
+            className={classes.button}
+          >
+            Next
+          </Button>
+        </div>
       </React.Fragment>
     );
   }
 }
 
-export default AddressForm;
+export default withStyles(styles)(AddressForm);

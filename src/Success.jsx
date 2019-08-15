@@ -1,6 +1,5 @@
 import React, { Component } from "react";
 import Typography from "@material-ui/core/Typography";
-import PropTypes from "prop-types";
 
 class Success extends Component {
   render() {

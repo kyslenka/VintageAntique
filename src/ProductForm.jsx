@@ -21,11 +21,6 @@ const CardProduct = styled.div`
   box-shadow: 0 -6px 0 #fff, 0 1px 6px rgba(0, 0, 0, 0.35);
 `;
 
-const CardBody = styled.div`
-  display: grid;
-  margin: 20px;
-`;
-
 const FormInput = styled.input`
   font-family: "Roboto", "Helvetica", "Arial", sans-serif;
   background: rgba(255, 255, 255, 0.1);
@@ -101,16 +96,6 @@ const Wrapper = styled.div`
   position: relative;
 `;
 
-const FileInput = styled.input`
-  opacity: 0;
-  overflow: hidden;
-  position: absolute;
-  z-index: -1;
-  cursor: pointer;
-  &:focus {
-    background-color: red;
-  }
-`;
 const FileLabel = styled.label`
   overflow: hidden;
   color: #8a97a0;

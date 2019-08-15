@@ -9,9 +9,9 @@ import LogIn from "./LogIn.jsx";
 import Home from "./Home.jsx";
 import Catalogue from "./Catalogue.jsx";
 import ProductForm from "./ProductForm.jsx";
-import ProductDetails2 from "./ProductDetails2.jsx";
+import ProductDetails from "./ProductDetails.jsx";
 import SearchResults from "./SearchResults.jsx";
-import ShoppingCart2 from "./ShoppingCart2.jsx";
+import ShoppingCart from "./ShoppingCart.jsx";
 import Checkout from "./Checkout.jsx";
 import AddressForm from "./AddressForm.jsx";
 import PaymentForm from "./PaymentForm.jsx";
@@ -26,7 +26,6 @@ const Wrapper = styled.div`
 `;
 
 const Routes = styled.div`
-  /* min-height: 100vh; */
   min-height: calc(100vh - 60px - 130px);
 `;
 class App extends Component {
@@ -47,18 +46,18 @@ class App extends Component {
     const catalogueId = routerData.match.params.catalogueId;
     return <Catalogue id={catalogueId} />;
   };
-  renderProductDetails2 = routerData => {
+  renderProductDetails = routerData => {
     const productId = routerData.match.params.productId;
     const catalogueId = routerData.match.params.catalogueId;
-    return <ProductDetails2 id={productId} catalogueId={catalogueId} />;
+    return <ProductDetails id={productId} catalogueId={catalogueId} />;
   };
   renderProductForm = () => {
     return <ProductForm />;
   };
-  renderShoppingCart2 = routerData => {
+  renderShoppingCart = routerData => {
     const productId = routerData.match.params.productId;
     const catalogueId = routerData.match.params.catalogueId;
-    return <ShoppingCart2 id={productId} catalogueId={catalogueId} />;
+    return <ShoppingCart id={productId} catalogueId={catalogueId} />;
   };
   renderCheckout = () => {
     return <Checkout />;
@@ -97,7 +96,7 @@ class App extends Component {
               <Route
                 exact={true}
                 path="/catalogue/:catalogueId/product/:productId"
-                render={this.renderProductDetails2}
+                render={this.renderProductDetails}
               />
               <Route
                 exact={true}
@@ -107,7 +106,7 @@ class App extends Component {
               <Route
                 exact={true}
                 path="/cart/catalogue/:catalogueId/product/:productId"
-                render={this.renderShoppingCart2}
+                render={this.renderShoppingCart}
               />
               <Route
                 exact={true}
@@ -124,7 +123,7 @@ class App extends Component {
                 path="/paymentForm"
                 render={this.renderPaymentForm}
               />
-              <Route exact={true} path="/review" render={this.renderReview2} />
+              <Route exact={true} path="/review" render={this.renderReview} />
               <Route
                 exact={true}
                 path="/allProducts"
