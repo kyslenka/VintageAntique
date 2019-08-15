@@ -329,7 +329,7 @@ class ShoppingCart2 extends Component {
           <CheckoutContainer>
             <CartItemList>
               {cart.map(product => (
-                <Container key={product.id}>
+                <Container>
                   <ProductBox>
                     <Image>
                       <img

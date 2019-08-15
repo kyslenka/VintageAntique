@@ -6,27 +6,27 @@ const initialCatalogues = [
       "This extraordinary collection of antique furniture pieces includes rare cabinets dating 17th-century, 19th-century tables and chairs as well as 18th-century French furniture, English oak rarities, and American masterworks.",
     products: [
       {
-        title: "Francois Linke Side Table",
+        title: "French Gilt Bronze Tea Table",
         description:
-          "This enchanting and rare side table was crafted by the famous François Linke. Crafted of luxurious satinwood, the table incorporates elegant Wedgwood jasper cameo plaques. Linke's trademark gilt bronze mounts complete this enchanting design.",
+          "Featuring exquisite curved gilt bronze mounts and a two-tier design, this tea table is the result of highly skilled craftsmanship. The upper tier of the table is topped with a diamond parquetry design, and is supported by scrolling gilt bronze mounts which take the form of cherubs and acanthus leaves. ",
         price: "$2500",
         image: "/images/table.jpg",
         id: 0
       },
       {
-        title: "Korean Drawer Apothecary Chest",
+        title: "Danish Rococo Walnut Commode",
         description:
-          "Traditional oriental 18-drawer apothecary chest. Richly grained dark walnut stained wood finish. Elegant Asian style brass butterfly hasp & hardware. Korean design Tori gate style cantilevered top.",
+          "A very charming and small Danish parcel-gilt walnut and burr-walnut commode by Mathias Ortmann, mid-18th century. The shaped veneered top above moulded frieze with punched ground incised with foliate decoration above four shaped drawers flanked by canted angles on C-scrolled feet. ",
         price: "$3250",
         image: "/images/drawer.jpg",
         id: 1
       },
       {
-        title: "Biedermeier Globe Table",
+        title: "Black Quartz Lamp",
         description:
-          "This 19-th century table is made of elm and cherry and finely inlaid with fillets and frieze also partly ebonised. Hinged globe on 3 scrolled legs, architectural style fitted interior with mirror-lined central compartment between canopy and stepped drawer, flanked by cylindrical drawers. ",
-        price: "$2350",
-        image: "/images/globeTable.jpg",
+          "A rare gilded polished brass flower lamp by Willy Daro, France, 1970s with large black quartz stones (possibly amethyst). Signed on the base.",
+        price: "$550",
+        image: "/images/lamp.jpg",
         id: 2
       },
       {
@@ -38,9 +38,9 @@ const initialCatalogues = [
         id: 3
       },
       {
-        title: "French Antique Sofa",
+        title: "Baroque Style Chaise Longue",
         description:
-          "Luxury antique French sofa set in Louis XV style finished in golden leafs and made of first class beech wood and high quality fabrics.",
+          "This fabulous and large baroque style chaise longue has a beautiful burgundy velvet fabric. Frame color is made with gold leaf.",
         price: "$1050",
         image: "/images/sofa.jpg",
         id: 4
@@ -68,15 +68,15 @@ const initialCatalogues = [
         price: "$2900",
         image: "/images/bench.jpg",
         id: 7
-      },
-      {
-        title: "Satinwood Armchair",
-        description:
-          "An exceptional George III satinwood open armchair in the manner of George Hepplewhite. Vertical splat carved with the Prince of Wales’s feathers, the caned seat fitted with blue silk cushions.",
-        price: "$2250",
-        image: "/images/chair.png",
-        id: 8
       }
+      // {
+      //   title: "Mahogany Open Armchair",
+      //   description:
+      //     "A late 19th century mahogany open armchair in the Chippendale style. The back has pierced radiating wheel splats with a carved central patera.",
+      //   price: "$2250",
+      //   image: "/images/chair.jpeg",
+      //   id: 8
+      // }
     ]
   },
   {

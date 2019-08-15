@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import { withRouter } from "react-router-dom";
 import styled from "styled-components";
+import CircularProgress from "@material-ui/core/CircularProgress";
 
 const Wrapper = styled.div`
   background: #fff;
@@ -74,7 +75,13 @@ const Button = styled.div`
     background-color: #dfd1f18c;
   }
 `;
-
+const CircularProgressWrapper = styled.div`
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+`;
 class ProductDetails2 extends Component {
   constructor() {
     super();
@@ -116,7 +123,11 @@ class ProductDetails2 extends Component {
   };
   render() {
     if (!this.state.product) {
-      return "Loading...";
+      return (
+        <CircularProgressWrapper>
+          <CircularProgress />
+        </CircularProgressWrapper>
+      );
     }
     const { image, title, description, price } = this.state.product;
     console.log(this.state);
