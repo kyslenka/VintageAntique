@@ -4,8 +4,8 @@ import styled from "styled-components";
 import classNames from "classnames";
 import CssBaseline from "@material-ui/core/CssBaseline";
 import { withStyles } from "@material-ui/core/styles";
-import ItemCard from "./ItemCard.jsx";
 import CircularProgress from "@material-ui/core/CircularProgress";
+import ItemCard from "./ItemCard.jsx";
 
 const styles = theme => ({
   heroUnit: {

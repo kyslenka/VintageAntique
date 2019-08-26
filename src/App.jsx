@@ -137,7 +137,6 @@ class App extends Component {
             <Navbar />
             <SignUp />
             <LogIn />
-            <Footer />
           </div>
         )}
       </BrowserRouter>

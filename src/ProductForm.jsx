@@ -1,7 +1,7 @@
 import React, { Component } from "react";
+import { withRouter } from "react-router-dom";
 import styled from "styled-components";
 import Select from "react-select";
-import { withRouter } from "react-router-dom";
 
 const options = [
   { value: "furniture", label: "Furniture" },
@@ -11,8 +11,6 @@ const options = [
 
 const CardProduct = styled.div`
   max-width: 600px;
-  padding: 10px 20px;
-  background: #f4f7f8;
   margin: 20px auto;
   padding: 20px;
   background: #f4f7f8;
@@ -27,35 +25,14 @@ const FormInput = styled.input`
   border: none;
   border-radius: 4px;
   font-size: 16px;
-  margin: 0;
   outline: 0;
   padding: 10px;
   width: 100%;
   box-sizing: border-box;
   background-color: #fff;
   color: #8a97a0;
-  box-shadow: 0 1px 0 rgba(0, 0, 0, 0.03) inset;
   margin-bottom: 30px;
   :focus {
-    background: #dceefb;
-  }
-`;
-const TextArea = styled.textarea`
-  font-family: "Roboto", "Helvetica", "Arial", sans-serif;
-  background: rgba(255, 255, 255, 0.1);
-  border: none;
-  border-radius: 4px;
-  font-size: 16px;
-  margin: 0;
-  outline: 0;
-  padding: 10px;
-  width: 100%;
-  box-sizing: border-box;
-  background-color: #fff;
-  color: #8a97a0;
-  box-shadow: 0 1px 0 rgba(0, 0, 0, 0.03) inset;
-  margin-bottom: 30px;
-  &:focus {
     background: #dceefb;
   }
 `;
@@ -78,9 +55,6 @@ const SubmitButton = styled.button`
   outline: none;
   text-decoration: none;
   text-transform: uppercase;
-  transition: background-color 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms,
-    box-shadow 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms,
-    border 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
   box-shadow: 0px 1px 5px 0px rgba(0, 0, 0, 0.2),
     0px 2px 2px 0px rgba(0, 0, 0, 0.14), 0px 3px 1px -2px rgba(0, 0, 0, 0.12);
   &:hover {
@@ -93,7 +67,6 @@ const Wrapper = styled.div`
   border: 1px solid #ddd;
   margin: 20px 0;
   border-radius: 6px;
-  position: relative;
 `;
 
 const FileLabel = styled.label`
@@ -225,9 +198,7 @@ class ProductForm extends Component {
                 borderRadius: 4,
                 backgroundColor: "#fff",
                 color: "#8a97a0",
-                boxShadow: "0 1px 0 rgba(0, 0, 0, 0.03) inset",
-                marginBottom: 30,
-                transition: "all 0.30s ease-in-out"
+                marginBottom: 30
               }}
             />
             <Center>

@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import { connect } from "react-redux";
 import PropTypes from "prop-types";
 import withStyles from "@material-ui/core/styles/withStyles";
 import CssBaseline from "@material-ui/core/CssBaseline";
@@ -11,7 +12,6 @@ import AddressForm from "./AddressForm.jsx";
 import PaymentForm from "./PaymentForm.jsx";
 import Review from "./Review.jsx";
 import Success from "./Success.jsx";
-import { connect } from "react-redux";
 
 const styles = theme => ({
   appBar: {
@@ -185,7 +185,7 @@ class Checkout extends Component {
                   ))}
                 </Stepper>
                 <React.Fragment>
-                  <AddressForm2
+                  <AddressForm
                     nextStep={this.nextStep}
                     handleChange={this.handleChange}
                     values={values}

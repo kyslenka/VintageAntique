@@ -1,8 +1,7 @@
 import React, { Component } from "react";
-import { Link } from "react-router-dom";
-import styled from "styled-components";
-import { withRouter } from "react-router-dom";
+import { Link, withRouter } from "react-router-dom";
 import { connect } from "react-redux";
+import styled from "styled-components";
 
 const Wrapper = styled.div`
   background: #eee;
@@ -33,10 +32,8 @@ const CartItemList = styled.div`
   min-height: 100vh;
 `;
 const Container = styled.div`
-  margin-bottom: 20px;
   background-color: #fff;
   padding: 15px 0;
-  position: relative;
   margin-bottom: 8px;
   overflow: hidden;
 `;
@@ -45,12 +42,10 @@ const ProductBox = styled.div`
   background-color: #fff;
   min-width: 280px;
   display: flex;
-  justify-content: space-evenly;
 `;
 const Image = styled.div`
   flex: 1;
   padding: 10px;
-  overflow: hidden;
 `;
 
 const Details = styled.div`
@@ -91,14 +86,11 @@ const Price = styled.div`
 
 const Button = styled.button`
   padding: 10px 20px;
-  border-radius: 5px;
   cursor: pointer;
   border: none;
   font-size: 14px;
   font-weight: 500;
   background: #d4d3d3;
-  outline: none;
-  text-decoration: none;
   text-transform: uppercase;
   font-family: Arial, Helvetica, sans-serif;
   color: black;
@@ -169,6 +161,7 @@ const TotalPrice = styled.div`
 
 const CheckoutButton = styled.button`
   margin: 15px 0;
+  outline: none;
   cursor: pointer;
   width: 100%;
   color: #fff;
@@ -179,18 +172,19 @@ const CheckoutButton = styled.button`
   border: 1px solid;
   padding: 10px 12px;
   font-size: 23px;
-  border-radius: 0;
-  transition-property: background-color, border, color, opacity;
-  transition-duration: 0.15s;
-  transition-timing-function: ease-in-out;
+  &:hover {
+    background-color: #ca241a;
+  }
 `;
 const ProductEmptyCart = styled.div`
-  background: #fff;
-  padding: 150px 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
   margin: 0 auto;
+  background: #fff;
   height: 500px;
   width: 800px;
-  text-align: center;
   box-shadow: 0 -6px 0 #fff, 0 1px 6px rgba(0, 0, 0, 0.35);
   > h2 {
     text-transform: uppercase;
