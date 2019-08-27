@@ -212,7 +212,7 @@ class Checkout extends Component {
                   ))}
                 </Stepper>
                 <React.Fragment>
-                  <PaymentForm2
+                  <PaymentForm
                     nextStep={this.nextStep}
                     prevStep={this.prevStep}
                     handleChange={this.handleChange}
@@ -240,7 +240,7 @@ class Checkout extends Component {
                   ))}
                 </Stepper>
                 <React.Fragment>
-                  <Review2
+                  <Review
                     nextStep={this.nextStep}
                     prevStep={this.prevStep}
                     values={values}
