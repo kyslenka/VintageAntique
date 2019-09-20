@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
 import { Link, withRouter } from "react-router-dom";
+import styled from "styled-components";
 import PropTypes from "prop-types";
 import AppBar from "@material-ui/core/AppBar";
 import Toolbar from "@material-ui/core/Toolbar";
@@ -99,7 +100,7 @@ class Navbar extends Component {
     this.props.history.push("/cart/catalogue/:catalogueId/product/:productId");
   };
   render() {
-    const { classes, query, setLogout } = this.props;
+    const { classes, query, setLogout, cart } = this.props;
     console.log(classes.root);
     return (
       <>
