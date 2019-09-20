@@ -183,7 +183,7 @@ app.post("/remove/cart/product", upload.none(), (req, res) => {
     product => product.id === Number(productId)
   );
   const product = matchedProduct;
-  cart.splice(cart.find(p => p.id === product.id), 1);
+  cart.splice(cart.find(p => p.id === productId), 1);
   res.send(JSON.stringify({ success: true, product, cart }));
 });
 app.post("/checkoutData", upload.none(), (req, res) => {
